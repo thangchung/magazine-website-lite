@@ -1,0 +1,37 @@
+﻿<div class="row-fluid">
+    <div class="span6">
+        <section>
+            <h2 class="page-title">List of categories</h2>
+        </section>
+    </div>
+    <div class="span6" style="margin-top: 10px;">
+        <button data-bind="click: addCategory" type="button" class="btn pull-right" name="btn-add-category">Add</button>
+    </div>
+</div>
+
+<table class="table table-condensed table-hover table-bordered">
+    <thead>
+        <th>Id</th>
+        <td>Name</td>
+        <th>Created by</th>
+        <th>Created date</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody data-bind="foreach: categoryList.categories">
+        <tr>
+            <td data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: createdBy"></td>
+            <td data-bind="text: createdDate"></td>
+            <td><a href="#" data-bind="click: function (data, event) { $parent.editCategory(data)} ">Edit</a></td>
+            <td><a href="#" data-bind="click: function (data, event) { $parent.deleteCategory(data.id)} ">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <ul data-bind="foreach: categoryList.pagers">
+        <li><a href="#" data-bind="text: page, click: function (data, event) { $parent.categoryList.paging(data.page) }"></a></li>
+    </ul>
+</div>

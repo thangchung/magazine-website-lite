@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C1C62C4-A5AA-42E9-B48E-8B8954C28792}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cik.MagazineWeb.EntityFrameworkProvider</RootNamespace>
+    <AssemblyName>Cik.MagazineWeb.EntityFrameworkProvider</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoreDbContext.cs" />
+    <Compile Include="Migrations\201304100315005_InitialCreate.cs" />
+    <Compile Include="Migrations\201304100315005_InitialCreate.Designer.cs">
+      <DependentUpon>201304100315005_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304110312523_InitialCreate1.cs" />
+    <Compile Include="Migrations\201304110312523_InitialCreate1.Designer.cs">
+      <DependentUpon>201304110312523_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304110317326_InitialCreate11.cs" />
+    <Compile Include="Migrations\201304110317326_InitialCreate11.Designer.cs">
+      <DependentUpon>201304110317326_InitialCreate11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304231156069_111.cs" />
+    <Compile Include="Migrations\201304231156069_111.Designer.cs">
+      <DependentUpon>201304231156069_111.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304290820169_NewSchemaForItemContent.cs" />
+    <Compile Include="Migrations\201304290820169_NewSchemaForItemContent.Designer.cs">
+      <DependentUpon>201304290820169_NewSchemaForItemContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\QueryForItemSummaries.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
+      <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>
+      <Name>Cik.MagazineWeb.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\SharpLite.Domain\SharpLite.Domain.csproj">
+      <Project>{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}</Project>
+      <Name>SharpLite.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cik.MagazineWeb.Utilities\Cik.MagazineWeb.Utilities.csproj">
+      <Project>{DEDB9F76-334B-4636-AB3A-EE0A9387C409}</Project>
+      <Name>Cik.MagazineWeb.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201304100315005_InitialCreate.resx">
+      <DependentUpon>201304100315005_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304110312523_InitialCreate1.resx">
+      <DependentUpon>201304110312523_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304110317326_InitialCreate11.resx">
+      <DependentUpon>201304110317326_InitialCreate11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304231156069_111.resx">
+      <DependentUpon>201304231156069_111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304290820169_NewSchemaForItemContent.resx">
+      <DependentUpon>201304290820169_NewSchemaForItemContent.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,66 @@
+﻿<h3 id="alerts">Category summary (<span data-bind="text: categorySummary.totalCategory"></span>)</h3>
+<table class="table table-condensed table-hover table-bordered">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Created by</th>
+        <th>Created date</th>
+        <th>Modified by</th>
+        <th>Modified date</th>
+    </thead>
+    <tbody data-bind="foreach: categorySummary.categories">
+        <tr>
+            <td data-bind="text: id"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: createdBy"></td>
+            <td data-bind="text: createdDate"></td>
+            <!-- ko if: $data.modifiedBy -->
+            <td data-bind="text: modifiedBy"></td>
+            <!--  /ko -->
+            <!-- ko ifnot: $data.modifiedBy -->
+            <td></td>
+            <!-- /ko -->
+            <td data-bind="text: modifiedDate"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <ul data-bind="foreach: categorySummary.pagers">
+        <li><a href="#" data-bind="text: page, click: function (data, event) { $parent.categorySummary.paging(data.page); }"></a></li>
+    </ul>
+</div>
+
+<h3 id="alerts">Item summary(<span data-bind="text: itemSummary.totalItem"></span>)</h3>
+
+<table class="table table-condensed table-hover table-bordered">
+    <thead>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Created by</th>
+        <th>Created date</th>
+        <th>Modified by</th>
+        <th>Modified date</th>
+    </thead>
+    <tbody data-bind="foreach: itemSummary.items">
+        <tr>
+            <td data-bind="text: itemId"></td>
+            <td data-bind="text: title"></td>
+            <td data-bind="text: createdBy"></td>
+            <td data-bind="text: createdDate"></td>
+            <!-- ko if: $data.modifiedBy -->
+            <td data-bind="text: modifiedBy"></td>
+            <!--  /ko -->
+            <!-- ko ifnot: $data.modifiedBy -->
+            <td></td>
+            <!-- /ko -->
+            <td data-bind="text: modifiedDate"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <ul data-bind="foreach: itemSummary.pagers">
+        <li><a href="#" data-bind="text: page, click: function (data, event) { $parent.itemSummary.paging(data.page); }"></a></li>
+    </ul>
+</div>
