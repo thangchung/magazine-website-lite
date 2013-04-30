@@ -12,7 +12,7 @@ using SharpLite.Domain.DataInterfaces;
 
 namespace Cik.MagazineWeb.Application
 {
-    public class MagazineApplication : ApplicationBase, IMagazineApplication
+    public  partial class MagazineApplication : ApplicationBase, IMagazineApplication
     {
         #region variables & ctors
 

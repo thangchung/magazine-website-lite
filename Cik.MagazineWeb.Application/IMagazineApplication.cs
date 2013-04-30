@@ -6,6 +6,8 @@ namespace Cik.MagazineWeb.Application
 {
     public interface IMagazineApplication
     {
+        #region admin
+
         IEnumerable<CategorySummaryDto> GetCategorySummaries();
 
         CategorySummaryDto GetCategoryById(int id);
@@ -17,5 +19,15 @@ namespace Cik.MagazineWeb.Application
         void DeleteCategory (int id);
 
         ItemSummaryViewModel GetItemSummaryPaging(int pageSize, int page);
+
+        #endregion
+
+        #region front-end
+
+        HomePageViewModel BuildHomePageViewModel();
+
+        CategoryMenuViewModel GetCategoryMenu();
+
+        #endregion
     }
 }

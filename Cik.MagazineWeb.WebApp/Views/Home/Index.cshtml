@@ -1,0 +1,12 @@
+﻿@model Cik.MagazineWeb.Application.ViewModels.HomePageViewModel
+
+@section topmenu {
+    <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+            <li class="current-page">
+                <a href="/"><i class="icon-home"></i><br />Home</a>
+            </li>
+            @Html.Partial("_TopMenu", Model.TopMenu)
+        </ul>
+    </div>
+}

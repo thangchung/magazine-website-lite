@@ -1,0 +1,7 @@
+﻿@model Cik.MagazineWeb.Application.ViewModels.CategoryMenuViewModel
+@foreach (var menu in Model.Categories)
+{
+    <li>
+        <a href="/Home/Category/@menu.Id"><i class="icon-camera"></i><br />@menu.Name</a>
+    </li>
+}

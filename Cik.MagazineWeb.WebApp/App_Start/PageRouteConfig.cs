@@ -1,7 +1,7 @@
 using System.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(Cik.MagazineWeb.WebApp.App_Start.HotTowelRouteConfig), "RegisterHotTowelPreStart", Order = 2)]
+    typeof(Cik.MagazineWeb.WebApp.App_Start.PageRouteConfig), "RegisterHotTowelPreStart", Order = 2)]
 
 namespace Cik.MagazineWeb.WebApp.App_Start {
   ///<summary>
@@ -12,7 +12,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start {
   /// This class is discovered and run during startup
   /// http://blogs.msdn.com/b/davidebb/archive/2010/10/11/light-up-your-nupacks-with-startup-code-and-webactivator.aspx
   ///</remarks>
-  public static class HotTowelRouteConfig {
+  public static class PageRouteConfig {
 
     public static void RegisterHotTowelPreStart() {
 
@@ -22,7 +22,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start {
           url: "{controller}/{action}/{id}",
           defaults: new
           {
-              controller = "Dashboard",
+              controller = "Home",
               action = "Index",
               id = UrlParameter.Optional
           }

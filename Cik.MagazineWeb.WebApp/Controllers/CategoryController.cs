@@ -1,16 +1,12 @@
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Cik.MagazineWeb.WebApp.Controllers
 {
-    public class HotTowelController : Controller
+    public class CategoryController : Controller
     {
-        //
-        // GET: /HotTowel/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }
