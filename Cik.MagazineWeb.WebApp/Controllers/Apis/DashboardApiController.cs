@@ -8,6 +8,7 @@ using Cik.MagazineWeb.Utilities;
 
 namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 {
+    [Authorize]
     public class DashboardApiController : ApiControllerBase
     {
         private readonly IMagazineApplication _magazineApp;

@@ -7,6 +7,7 @@ using Cik.MagazineWeb.Utilities;
 
 namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 {
+    [Authorize]
     public class ItemApiController : ApiControllerBase
     {
         private readonly IMagazineApplication _magazineApp;
