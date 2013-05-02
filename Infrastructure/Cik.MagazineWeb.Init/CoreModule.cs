@@ -27,6 +27,8 @@ namespace Cik.MagazineWeb.Init
 
             // register query
             builder.RegisterType<QueryForItemSummaries>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<QueryForHottestItems>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<QueryForLatestItems>().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
     }
 }

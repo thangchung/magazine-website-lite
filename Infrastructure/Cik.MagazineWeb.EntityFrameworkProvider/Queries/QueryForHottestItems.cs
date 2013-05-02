@@ -7,11 +7,11 @@ using SharpLite.Domain.DataInterfaces;
 
 namespace Cik.MagazineWeb.EntityFrameworkProvider.Queries
 {
-    public class QueryForItemSummaries : IQueryForItemSummaries
+    public class QueryForHottestItems : IQueryForHottestItems
     {
         private readonly IRepository<Item> _itemRepository;
 
-        public QueryForItemSummaries(IRepository<Item> itemRepository)
+        public QueryForHottestItems(IRepository<Item> itemRepository)
         {
             Guard.ArgumentNotNull(itemRepository, "ItemRepository");
 
@@ -21,12 +21,13 @@ namespace Cik.MagazineWeb.EntityFrameworkProvider.Queries
             _itemRepository.Include("Category").Include("ItemContent");
         }
 
-        public IEnumerable<ItemSummaryDto> GetItemSummaries()
+        public IEnumerable<ItemSummaryDto> GetHottestItems(int numOfItemOnHomePage)
         {
             var queryable = _itemRepository.GetAll();
             return (from item in queryable
-                   select new ItemSummaryDto
-                       {
+                    orderby item.CreatedDate descending
+                    select new ItemSummaryDto
+                        {
                             CategoryId = item.Category.Id,
                             CategoryName = item.Category.Name,
                             ItemId = item.Id,
@@ -37,7 +38,8 @@ namespace Cik.MagazineWeb.EntityFrameworkProvider.Queries
                             CreatedDate = item.CreatedDate,
                             ModifiedBy = item.ModifiedBy,
                             ModifiedDate = item.ModifiedDate
-                       }).ToList();
+                        }
+                   ).Take(numOfItemOnHomePage).ToList();
         }
     }
 }

@@ -19,23 +19,36 @@ namespace Cik.MagazineWeb.Application
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<Item> _itemRepository;
         private readonly IQueryForItemSummaries _queryForItemSummaries;
+        private readonly IQueryForHottestItems _queryForHottestItems;
+        private readonly IQueryForLatestItems _queryForLatestItems;
 
-        public MagazineApplication()
+        public MagazineApplication(IQueryForHottestItems queryForHottestItems, IQueryForLatestItems queryForLatestItems)
             : this(DependencyResolver.Current.GetService<IRepository<Category>>(),
                     DependencyResolver.Current.GetService<IRepository<Item>>(), 
-                    DependencyResolver.Current.GetService<IQueryForItemSummaries>())
+                    DependencyResolver.Current.GetService<IQueryForItemSummaries>(),
+                    DependencyResolver.Current.GetService<IQueryForHottestItems>(),
+                    DependencyResolver.Current.GetService<IQueryForLatestItems>())
         {
         }
 
-        public MagazineApplication(IRepository<Category> categoryRepository, IRepository<Item> itemRepository, IQueryForItemSummaries queryForItemSummaries)
+        public MagazineApplication(
+            IRepository<Category> categoryRepository, 
+            IRepository<Item> itemRepository, 
+            IQueryForItemSummaries queryForItemSummaries, 
+            IQueryForHottestItems queryForHottestItems, 
+            IQueryForLatestItems queryForLatestItems)
         {
             Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
             Guard.ArgumentNotNull(itemRepository, "ItemRepository");
             Guard.ArgumentNotNull(queryForItemSummaries, "QueryForItemSummaries");
+            Guard.ArgumentNotNull(queryForHottestItems, "QueryForHottestItems");
+            Guard.ArgumentNotNull(queryForLatestItems, "QueryForLatestItems");
 
             _categoryRepository = categoryRepository;
             _itemRepository = itemRepository;
             _queryForItemSummaries = queryForItemSummaries;
+            _queryForHottestItems = queryForHottestItems;
+            _queryForLatestItems = queryForLatestItems;
         }
 
         #endregion

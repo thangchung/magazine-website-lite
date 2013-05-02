@@ -10,6 +10,8 @@
 
         public string Title { get; set; }
 
+        public string AvatarImage { get; set; }
+
         public string ShortDescription { get; set; }
     }
 }

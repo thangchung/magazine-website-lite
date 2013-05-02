@@ -45,6 +45,8 @@
     <Compile Include="MagazineMgmt\Category.cs" />
     <Compile Include="MagazineMgmt\Item.cs" />
     <Compile Include="MagazineMgmt\ItemContent.cs" />
+    <Compile Include="MagazineMgmt\Queries\IQueryForLatestItems.cs" />
+    <Compile Include="MagazineMgmt\Queries\IQueryForHottestItems.cs" />
     <Compile Include="MagazineMgmt\Queries\IQueryForItemSummaries.cs" />
     <Compile Include="MagazineMgmt\Queries\ItemSummaryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

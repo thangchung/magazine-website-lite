@@ -50,7 +50,7 @@ jQuery(document).ready(function() {
 */
 jQuery(function($) {
     $(".show-tweets").tweet({
-        username: "anli_zaimi",
+        username: "thangchung",
         page: 1,
         count: 10,
         loading_text: "loading ..."
@@ -76,7 +76,7 @@ $(document).ready(function() {
     $('.flickr-feed').jflickrfeed({
         limit: 8,
         qstrings: {
-            id: '52617155@N08'
+            id: '44764810@N04'
         },
         itemTemplate: '<li><a href="{{link}}" target="_blank"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
     });

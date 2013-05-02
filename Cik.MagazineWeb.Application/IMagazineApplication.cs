@@ -6,7 +6,7 @@ namespace Cik.MagazineWeb.Application
 {
     public interface IMagazineApplication
     {
-        #region admin
+        #region admin page
 
         IEnumerable<CategorySummaryDto> GetCategorySummaries();
 
@@ -22,9 +22,11 @@ namespace Cik.MagazineWeb.Application
 
         #endregion
 
-        #region front-end
+        #region front-end page
 
-        HomePageViewModel BuildHomePageViewModel();
+        HomePageViewModel BuildHomePageViewModel(int numOfItemOnHomePage);
+
+        CategoryPageViewModel BuildCategoryPageViewModel();
 
         CategoryMenuViewModel GetCategoryMenu();
 

@@ -56,8 +56,10 @@
     <Compile Include="MagazineClientApplication.cs" />
     <Compile Include="Profiles\CategoryProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CategoryPageViewModel.cs" />
     <Compile Include="ViewModels\CategorySummaryViewModel.cs" />
     <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
+    <Compile Include="ViewModels\FrontPageViewModelBase.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\ItemSummaryViewModel.cs" />
   </ItemGroup>

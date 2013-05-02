@@ -15,7 +15,7 @@
 			qstrings: {
 				lang: 'en-us',
 				format: 'json',
-				jsoncallback: '?'
+				jsoncallback: '?',
 			},
 			cleanDescription: true,
 			useTemplate: true,

@@ -14,6 +14,18 @@ namespace Cik.MagazineWeb.WebApp
                 .Include("~/scripts/jquery-{version}.js"));
 
             bundles.Add(
+                new ScriptBundle("~/andia-agency/scripts")
+                    .Include("~/andia-agency/assets/js/jquery-1.8.2.min.js")
+                    .Include("~/andia-agency/assets/bootstrap/js/bootstrap.min.js")
+                    .Include("~/andia-agency/assets/js/jquery.flexslider.js")
+                    .Include("~/andia-agency/assets/js/jquery.tweet.js")
+                    .Include("~/andia-agency/assets/js/jflickrfeed.js")
+                    .Include("~/andia-agency/assets/js/jquery.ui.map.min.js")
+                    .Include("~/andia-agency/assets/js/jquery.quicksand.js")
+                    .Include("~/andia-agency/assets/prettyPhoto/js/jquery.prettyPhoto.js")
+                    .Include("~/andia-agency/assets/js/scripts.js"));
+
+            bundles.Add(
               new ScriptBundle("~/scripts/vendor")
                 .Include("~/scripts/jquery-{version}.js")
                 .Include("~/scripts/knockout-{version}.debug.js")
@@ -27,6 +39,14 @@ namespace Cik.MagazineWeb.WebApp
                 .Include("~/scripts/jquery.tmpl.js")
                 .Include("~/scripts/utilities.js")
               );
+
+            bundles.Add(
+                new ScriptBundle("~/andia-agency/css")
+                .Include("~/andia-agency/assets/bootstrap/css/bootstrap.min.css")
+                .Include("~/andia-agency/assets/prettyPhoto/css/prettyPhoto.css")
+                .Include("~/andia-agency/assets/css/flexslider.css")
+                .Include("~/andia-agency/assets/css/font-awesome.css")
+                .Include("~/andia-agency/assets/css/style.css"));
 
             bundles.Add(
               new StyleBundle("~/Content/css")

@@ -1,9 +1,6 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <title>A Magazine Website - An ASP.NET MVC sample</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +11,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">
-        <link rel="stylesheet" href="/andia-agency/assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/andia-agency/assets/prettyPhoto/css/prettyPhoto.css">
-        <link rel="stylesheet" href="/andia-agency/assets/css/flexslider.css">
-        <link rel="stylesheet" href="/andia-agency/assets/css/font-awesome.css">
-        <link rel="stylesheet" href="/andia-agency/assets/css/style.css">
+        @Styles.Render("~/andia-agency/css")
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -27,13 +20,11 @@
 
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="/andia-agency/assets/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/andia-agency/assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/andia-agency/assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/andia-agency/assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="/andia-agency/assets/ico/apple-touch-icon-57-precomposed.png">
-
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="@Url.Content("~/andia-agency/assets/ico/apple-touch-icon-144-precomposed.png")">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="@Url.Content("~/andia-agency/assets/ico/apple-touch-icon-114-precomposed.png")">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="@Url.Content("~/andia-agency/assets/ico/apple-touch-icon-72-precomposed.png")">
+        <link rel="apple-touch-icon-precomposed" href="@Url.Content("~/andia-agency/assets/ico/apple-touch-icon-57-precomposed.png")">
     </head>
-
     <body>
 
         <!-- Header -->
@@ -48,9 +39,16 @@
                                 <span class="icon-bar"></span>
                             </a>
                             <h1>
-                                <a class="brand" href="#">Context is King - no pain no gain...</a>
+                                <a class="brand" href="http://weblogs.asp.net/thangchung">Context is King - no pain no gain...</a>
                             </h1>
-                            @RenderSection("topmenu", required: false)
+                            <div class="nav-collapse collapse">
+                                <ul class="nav pull-right">
+                                    <li class="current-page">
+                                        <a href="/"><i class="icon-home"></i><br />Home</a>
+                                    </li>
+                                    @RenderSection("topmenu", required: false)
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,120 +65,30 @@
             @RenderBody()
         </div>
 
-        <!-- The hottest articles -->
-        <div class="portfolio container">
-            <div class="portfolio-title">
-                <h3>The hottest articles</h3>
-            </div>
-            <div class="row">
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work1.jpg" alt="">
-                    <h4>Lorem Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work1.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work2.jpg" alt="">
-                    <h4>Ipsum Logo</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work2.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work3.jpg" alt="">
-                    <h4>Dolor Prints</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work3.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work4.jpg" alt="">
-                    <h4>Sit Amet Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work4.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- The lastest articles -->
-        <div class="portfolio container">
-            <div class="portfolio-title">
-                <h3>The lastest articles</h3>
-            </div>
-            <div class="row">
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work1.jpg" alt="">
-                    <h4>Lorem Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work1.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work2.jpg" alt="">
-                    <h4>Ipsum Logo</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work2.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work3.jpg" alt="">
-                    <h4>Dolor Prints</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work3.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="/andia-agency/assets/img/portfolio/work4.jpg" alt="">
-                    <h4>Sit Amet Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="/andia-agency/assets/img/portfolio/work4.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Testimonials -->
+        <!-- history -->
         <div class="testimonials container">
             <div class="testimonials-title">
-                <h3>Testimonials</h3>
+                <h3>Histories</h3>
             </div>
             <div class="row">
                 <div class="testimonial-list span12">
                     <div class="tabbable tabs-below">
                         <div class="tab-content">
                             <div class="tab-pane active" id="A">
-                                <img src="/andia-agency/assets/img/testimonials/1.jpg" title="" alt="">
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur..."<br /><span class="violet">Lorem Ipsum, dolor.co.uk</span></p>
+                                <img src="@Url.Content("~/andia-agency/assets/img/testimonials/1.jpg")" title="" alt="">
+                                <p>"1.3: We applied some new third javascript library into the admin page and change the appearance of the front-end page"<br /><span class="violet">thangchung</span></p>
                             </div>
                             <div class="tab-pane" id="B">
-                                <img src="/andia-agency/assets/img/testimonials/2.jpg" title="" alt="">
-                                <p>"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat..."<br /><span class="violet">Minim Veniam, nostrud.com</span></p>
+                                <img src="@Url.Content("~/andia-agency/assets/img/testimonials/3.jpg")" title="" alt="">
+                                <p>"1.2: We edited some contents in this site"<br /><span class="violet">thangchung</span></p>
                             </div>
                             <div class="tab-pane" id="C">
-                                <img src="/andia-agency/assets/img/testimonials/3.jpg" title="" alt="">
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur..."<br /><span class="violet">Lorem Ipsum, dolor.co.uk</span></p>
+                                <img src="@Url.Content("~/andia-agency/assets/img/testimonials/2.jpg")" title="" alt="">
+                                <p>"1.1: We removed some redundant codes that commented from the community. Fixed bug, and removed the complex security model and changed it to the simple one. Re-structure the architecture of the application"<br /><span class="violet">thangchung</span></p>
                             </div>
                             <div class="tab-pane" id="D">
-                                <img src="/andia-agency/assets/img/testimonials/1.jpg" title="" alt="">
-                                <p>"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat..."<br /><span class="violet">Minim Veniam, nostrud.com</span></p>
+                                <img src="@Url.Content("~/andia-agency/assets/img/testimonials/1.jpg")" title="" alt="">
+                                <p>"1.0: We are finish the draft version of this example"<br /><span class="violet">thangchung</span></p>
                             </div>
                         </div>
                        <ul class="nav nav-tabs">
@@ -199,9 +107,9 @@
             <div class="container">
                 <div class="row">
                     <div class="widget span3">
-                        <h4>About Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                        <p><a href="">Read more...</a></p>
+                        <h4>About this example</h4>
+                        <p>A small example that used an ASP.NET MVC 4 in a Visual studio 2012 for implemented a Magazine website.</p>
+                        <p><a href="#">Read more...</a></p>
                     </div>
                     <div class="widget span3">
                         <h4>Latest Tweets</h4>
@@ -213,39 +121,30 @@
                     </div>
                     <div class="widget span3">
                         <h4>Contact Me</h4>
-                        <p><i class="icon-map-marker"></i> Address: 325 Tan Hoa, Hoa Thanh ward, Tan Phu district, Ho Chi Minh city, Viet Nam</p>
+                        <p><i class="icon-map-marker"></i> Address: 325 Tan Hoa street, Hoa Thanh ward, Tan Phu district, Ho Chi Minh city, Viet Nam</p>
                         <p><i class="icon-phone"></i> Phone: 0084 123 45 67 890</p>
                         <p><i class="icon-user"></i> Skype: thangcq84</p>
-                        <p><i class="icon-envelope-alt"></i> Email: <a href="">thangchung@ymail.com</a></p>
+                        <p><i class="icon-envelope-alt"></i> Email: <a href="#">thangchung@ymail.com</a></p>
                     </div>
                 </div>
                 <div class="footer-border"></div>
                 <div class="row">
                     <div class="copyright span4">
-                        <p>Copyright 2013 by thangchung - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>.</p>
+                        <p>Copyright 2013 by <a href="http://weblogs.asp.net/thangchung">thangchung</a> - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>.</p>
                     </div>
                     <div class="social span8">
-                        <a class="facebook" href="https://www.facebook.com/thangchung"></a>
                         <a class="twitter" href="https://twitter.com/thangchung"></a>
+                        <a class="github" href="https://github.com/thangchung"></a>
                         <a class="linkedin" href="http://www.linkedin.com/profile/view?id=49632040"></a>
-                        <a class="pinterest" href="http://pinterest.com/thangchung/"></a>
+                        <a class="facebook" href="https://www.facebook.com/thangchung"></a>
                     </div>
                 </div>
             </div>
         </footer>
 
         <!-- Javascript -->
-        <script src="/andia-agency/assets/js/jquery-1.8.2.min.js"></script>
-        <script src="/andia-agency/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/andia-agency/assets/js/jquery.flexslider.js"></script>
-        <script src="/andia-agency/assets/js/jquery.tweet.js"></script>
-        <script src="/andia-agency/assets/js/jflickrfeed.js"></script>
         <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="/andia-agency/assets/js/jquery.ui.map.min.js"></script>
-        <script src="/andia-agency/assets/js/jquery.quicksand.js"></script>
-        <script src="/andia-agency/assets/prettyPhoto/js/jquery.prettyPhoto.js"></script>
-        <script src="/andia-agency/assets/js/scripts.js"></script>
-
+        @Scripts.Render("~/andia-agency/scripts")
     </body>
 
 </html>
