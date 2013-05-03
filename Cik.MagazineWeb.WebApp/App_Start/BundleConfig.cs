@@ -1,7 +1,7 @@
 using System;
 using System.Web.Optimization;
 
-namespace Cik.MagazineWeb.WebApp
+namespace Cik.MagazineWeb.WebApp.App_Start
 {
     public class BundleConfig
     {

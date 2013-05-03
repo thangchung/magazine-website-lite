@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
-using Cik.MagazineWeb.Application.Dtos;
-using Cik.MagazineWeb.Application.ViewModels;
+using Cik.MagazineWeb.Application.Magazines.Dtos;
+using Cik.MagazineWeb.Application.Magazines.Services;
+using Cik.MagazineWeb.Application.Magazines.ViewModels;
 using Cik.MagazineWeb.Domain.MagazineMgmt;
-using Cik.MagazineWeb.Domain.MagazineMgmt.Queries;
 using Cik.MagazineWeb.Utilities;
 using Cik.MagazineWeb.Utilities.Extensions;
 using SharpLite.Domain.DataInterfaces;
 
-namespace Cik.MagazineWeb.Application
+namespace Cik.MagazineWeb.Application.Magazines
 {
     public  partial class MagazineApplication : ApplicationBase, IMagazineApplication
     {
@@ -18,37 +17,29 @@ namespace Cik.MagazineWeb.Application
 
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<Item> _itemRepository;
-        private readonly IQueryForItemSummaries _queryForItemSummaries;
-        private readonly IQueryForHottestItems _queryForHottestItems;
-        private readonly IQueryForLatestItems _queryForLatestItems;
+        private readonly IItemSummaryService _itemSummaryService;
 
-        public MagazineApplication(IQueryForHottestItems queryForHottestItems, IQueryForLatestItems queryForLatestItems)
-            : this(DependencyResolver.Current.GetService<IRepository<Category>>(),
-                    DependencyResolver.Current.GetService<IRepository<Item>>(), 
-                    DependencyResolver.Current.GetService<IQueryForItemSummaries>(),
-                    DependencyResolver.Current.GetService<IQueryForHottestItems>(),
-                    DependencyResolver.Current.GetService<IQueryForLatestItems>())
-        {
-        }
+        //public MagazineApplication()
+        //    : this(DependencyResolver.Current.GetService<IRepository<Category>>(),
+        //            DependencyResolver.Current.GetService<IRepository<Item>>(), 
+        //            DependencyResolver.Current.GetService<IQueryForItemSummaries>(),
+        //            DependencyResolver.Current.GetService<IQueryForHottestItems>(),
+        //            DependencyResolver.Current.GetService<IQueryForLatestItems>())
+        //{
+        //}
 
         public MagazineApplication(
             IRepository<Category> categoryRepository, 
             IRepository<Item> itemRepository, 
-            IQueryForItemSummaries queryForItemSummaries, 
-            IQueryForHottestItems queryForHottestItems, 
-            IQueryForLatestItems queryForLatestItems)
+            IItemSummaryService itemSummaryService)
         {
             Guard.ArgumentNotNull(categoryRepository, "CategoryRepository");
             Guard.ArgumentNotNull(itemRepository, "ItemRepository");
-            Guard.ArgumentNotNull(queryForItemSummaries, "QueryForItemSummaries");
-            Guard.ArgumentNotNull(queryForHottestItems, "QueryForHottestItems");
-            Guard.ArgumentNotNull(queryForLatestItems, "QueryForLatestItems");
+            Guard.ArgumentNotNull(itemSummaryService, "ItemSummaryService");
 
             _categoryRepository = categoryRepository;
             _itemRepository = itemRepository;
-            _queryForItemSummaries = queryForItemSummaries;
-            _queryForHottestItems = queryForHottestItems;
-            _queryForLatestItems = queryForLatestItems;
+            _itemSummaryService = itemSummaryService;
         }
 
         #endregion
@@ -124,7 +115,7 @@ namespace Cik.MagazineWeb.Application
         public ItemSummaryViewModel GetItemSummaryPaging(int pageSize, int page)
         {
             var viewModel = new ItemSummaryViewModel();
-            var itemSummaries = _queryForItemSummaries.GetItemSummaries();
+            var itemSummaries = _itemSummaryService.GetItemSummaries();
 
             if (itemSummaries == null || !itemSummaries.Any())
             {

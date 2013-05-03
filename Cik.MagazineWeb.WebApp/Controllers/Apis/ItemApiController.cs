@@ -1,13 +1,12 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Cik.MagazineWeb.Application;
-using Cik.MagazineWeb.Application.ViewModels;
+using Cik.MagazineWeb.Application.Magazines;
+using Cik.MagazineWeb.Application.Magazines.ViewModels;
 using Cik.MagazineWeb.Utilities;
 
 namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 {
-    [Authorize]
     public class ItemApiController : ApiControllerBase
     {
         private readonly IMagazineApplication _magazineApp;

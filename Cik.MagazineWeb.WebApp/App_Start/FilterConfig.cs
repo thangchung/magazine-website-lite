@@ -1,7 +1,6 @@
-using System.Web;
 using System.Web.Mvc;
 
-namespace Cik.MagazineWeb.WebApp
+namespace Cik.MagazineWeb.WebApp.App_Start
 {
     public class FilterConfig
     {

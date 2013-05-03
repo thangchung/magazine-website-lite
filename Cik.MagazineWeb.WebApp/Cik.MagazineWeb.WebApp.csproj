@@ -398,6 +398,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -412,10 +413,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
-      <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>
-      <Name>Cik.MagazineWeb.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Framework\SharpLite.Domain\SharpLite.Domain.csproj">
       <Project>{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}</Project>
       <Name>SharpLite.Domain</Name>

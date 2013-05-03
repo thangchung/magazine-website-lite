@@ -1,5 +1,5 @@
 using System.Web.Mvc;
-using Cik.MagazineWeb.Application;
+using Cik.MagazineWeb.Application.Magazines;
 using Cik.MagazineWeb.Utilities;
 using ControllerBase = Cik.MagazineWeb.Utilities.ControllerBase;
 
@@ -22,9 +22,16 @@ namespace Cik.MagazineWeb.WebApp.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Category(int id)
+        public ActionResult Category(int id, string name)
         {
-            var viewModel = _magazineApplication.BuildCategoryPageViewModel();
+            var viewModel = _magazineApplication.BuildCategoryPageViewModel(id);
+            return View(viewModel);
+        }
+
+        public ActionResult Details(int categoryId, int itemId, string title)
+        {
+            var viewModel = _magazineApplication.BuildItemDetailsViewModel(categoryId, itemId);
+
             return View(viewModel);
         }
 

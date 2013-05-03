@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Cik.MagazineWeb.Application.Dtos;
-using Cik.MagazineWeb.Application.ViewModels;
+using Cik.MagazineWeb.Application.Magazines.Dtos;
+using Cik.MagazineWeb.Application.Magazines.ViewModels;
 
-namespace Cik.MagazineWeb.Application
+namespace Cik.MagazineWeb.Application.Magazines
 {
     public interface IMagazineApplication
     {
@@ -26,9 +26,11 @@ namespace Cik.MagazineWeb.Application
 
         HomePageViewModel BuildHomePageViewModel(int numOfItemOnHomePage);
 
-        CategoryPageViewModel BuildCategoryPageViewModel();
+        CategoryPageViewModel BuildCategoryPageViewModel(int id);
 
-        CategoryMenuViewModel GetCategoryMenu();
+        ItemDetailsViewModel BuildItemDetailsViewModel(int categoryId, int itemId);
+
+        CategoryMenuViewModel GetCategoryMenu(int id);
 
         #endregion
     }

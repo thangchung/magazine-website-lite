@@ -1,4 +1,4 @@
-﻿@model Cik.MagazineWeb.Application.ViewModels.HomePageViewModel
+﻿@model Cik.MagazineWeb.Application.Magazines.ViewModels.HomePageViewModel
 
 @section topmenu {
     @Html.Partial("_TopMenu", Model.TopMenu)
@@ -18,7 +18,7 @@
                 <p>@item.ShortDescription</p>
                 <div class="icon-awesome">
                     <a href="@Url.Content("~" + @item.AvatarImage)" rel="prettyPhoto"><i class="icon-search"></i></a>
-                    <a href="@Url.Content("/Home/Details/" + @item.ItemId)"><i class="icon-link"></i></a>
+                    <a href="@Url.Content("/Home/Details/" + @item.Title + "/" + 0 + "/" + @item.ItemId)"><i class="icon-link"></i></a>
                 </div>
             </div>
         }
@@ -39,7 +39,7 @@
                 <p>@item.ShortDescription</p>
                 <div class="icon-awesome">
                     <a href="@Url.Content("~" + @item.AvatarImage)" rel="prettyPhoto"><i class="icon-search"></i></a>
-                    <a href="@Url.Content("/Home/Details/" + @item.ItemId)"><i class="icon-link"></i></a>
+                    <a href="@Url.Content("/Home/Details/" + @item.Title + "/" + 0 + "/" + @item.ItemId)"><i class="icon-link"></i></a>
                 </div>
             </div>
         }

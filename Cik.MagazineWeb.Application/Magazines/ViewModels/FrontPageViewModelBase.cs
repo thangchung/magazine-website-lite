@@ -1,4 +1,4 @@
-﻿namespace Cik.MagazineWeb.Application.ViewModels
+﻿namespace Cik.MagazineWeb.Application.Magazines.ViewModels
 {
     public abstract class FrontPageViewModelBase
     {

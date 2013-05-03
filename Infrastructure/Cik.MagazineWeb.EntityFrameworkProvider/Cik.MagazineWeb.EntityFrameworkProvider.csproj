@@ -69,11 +69,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\QueryForLatestItems.cs" />
-    <Compile Include="Queries\QueryForHottestItems.cs" />
-    <Compile Include="Queries\QueryForItemSummaries.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
       <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>

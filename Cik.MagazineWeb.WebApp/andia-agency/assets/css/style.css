@@ -94,6 +94,12 @@ strong { font-weight: bold; }
 
 .header ul.nav li a:hover i { color: #fff; }
 
+.main-content {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+    text-align: left;
+}
 
 /* ----- Slider ----- */
 

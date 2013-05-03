@@ -7,7 +7,7 @@ using AutoMapper;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using Cik.MagazineWeb.Application.Profiles;
+using Cik.MagazineWeb.Application.Magazines.Profiles;
 
 namespace Cik.MagazineWeb.Init
 {

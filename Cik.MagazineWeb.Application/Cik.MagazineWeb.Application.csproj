@@ -50,22 +50,25 @@
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
     <Compile Include="DtoBase.cs" />
-    <Compile Include="Dtos\CategorySummaryDto.cs" />
-    <Compile Include="IMagazineApplication.cs" />
-    <Compile Include="MagazineApplication.cs" />
-    <Compile Include="MagazineClientApplication.cs" />
-    <Compile Include="Profiles\CategoryProfile.cs" />
+    <Compile Include="Magazines\Dtos\CategorySummaryDto.cs" />
+    <Compile Include="Magazines\Dtos\ItemDetailsDto.cs" />
+    <Compile Include="Magazines\Dtos\ItemSummaryDto.cs" />
+    <Compile Include="Magazines\IMagazineApplication.cs" />
+    <Compile Include="Magazines\MagazineApplication.cs" />
+    <Compile Include="Magazines\MagazineClientApplication.cs" />
+    <Compile Include="Magazines\Profiles\CategoryProfile.cs" />
+    <Compile Include="Magazines\Services\IItemSummaryService.cs" />
+    <Compile Include="Magazines\Services\ItemSummaryService.cs" />
+    <Compile Include="Magazines\ViewModels\ItemDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CategoryPageViewModel.cs" />
-    <Compile Include="ViewModels\CategorySummaryViewModel.cs" />
-    <Compile Include="ViewModels\CategoryMenuViewModel.cs" />
-    <Compile Include="ViewModels\FrontPageViewModelBase.cs" />
-    <Compile Include="ViewModels\HomePageViewModel.cs" />
-    <Compile Include="ViewModels\ItemSummaryViewModel.cs" />
+    <Compile Include="Magazines\ViewModels\CategoryPageViewModel.cs" />
+    <Compile Include="Magazines\ViewModels\CategorySummaryViewModel.cs" />
+    <Compile Include="Magazines\ViewModels\CategoryMenuViewModel.cs" />
+    <Compile Include="Magazines\ViewModels\FrontPageViewModelBase.cs" />
+    <Compile Include="Magazines\ViewModels\HomePageViewModel.cs" />
+    <Compile Include="Magazines\ViewModels\ItemSummaryViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
       <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>

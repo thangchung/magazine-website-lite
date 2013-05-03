@@ -45,14 +45,11 @@
     <Compile Include="MagazineMgmt\Category.cs" />
     <Compile Include="MagazineMgmt\Item.cs" />
     <Compile Include="MagazineMgmt\ItemContent.cs" />
-    <Compile Include="MagazineMgmt\Queries\IQueryForLatestItems.cs" />
-    <Compile Include="MagazineMgmt\Queries\IQueryForHottestItems.cs" />
-    <Compile Include="MagazineMgmt\Queries\IQueryForItemSummaries.cs" />
-    <Compile Include="MagazineMgmt\Queries\ItemSummaryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\DataAnnotationsValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="MagazineMgmt\Queries\" />
     <Folder Include="UserMgmt\Queries\" />
   </ItemGroup>
   <ItemGroup>

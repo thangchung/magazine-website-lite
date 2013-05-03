@@ -1,4 +1,6 @@
-﻿namespace Cik.MagazineWeb.Domain.MagazineMgmt.Queries
+﻿using Cik.MagazineWeb.Domain;
+
+namespace Cik.MagazineWeb.Application.Magazines.Dtos
 {
     public class ItemSummaryDto : AuditEntity
     {
