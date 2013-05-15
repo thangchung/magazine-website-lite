@@ -8,6 +8,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Cik.MagazineWeb.Application.Magazines.Profiles;
+using Cik.MagazineWeb.Application.UserAuthentications.Profiles;
 
 namespace Cik.MagazineWeb.Init
 {
@@ -34,6 +35,7 @@ namespace Cik.MagazineWeb.Init
 
             // register all AutoMapper profiles
             Mapper.AddProfile(new CategoryProfile());
+            Mapper.AddProfile(new UserProfile());
 
             // register it to ASP.NET MVC
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

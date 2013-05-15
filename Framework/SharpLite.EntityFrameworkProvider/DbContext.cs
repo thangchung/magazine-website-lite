@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.Entity.Validation;
 using SharpLite.Domain.DataInterfaces;
 
 namespace SharpLite.EntityFrameworkProvider
@@ -26,20 +25,7 @@ namespace SharpLite.EntityFrameworkProvider
         /// </summary>
         public virtual void CommitChanges()
         {
-            try
-            {
-                OpenConnection();
-
-                _dbContext.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                throw;
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            _dbContext.SaveChanges();
         }
 
         public virtual void CommitTransaction()
@@ -54,23 +40,17 @@ namespace SharpLite.EntityFrameworkProvider
                 _transaction.Rollback();
         }
 
-        private static IDbTransaction _transaction;
-        private readonly System.Data.Entity.DbContext _dbContext;
-
-        private void OpenConnection()
-        {
-            if (_dbContext != null && _dbContext.Database.Connection.State == ConnectionState.Closed) ;
-            {
-                _dbContext.Database.Connection.Open();
-            }
-        }
-
-        private void CloseConnection()
+        public void Dispose()
         {
             if (_dbContext != null && _dbContext.Database.Connection.State == ConnectionState.Open) ;
             {
                 _dbContext.Database.Connection.Close();
             }
+
+            GC.SuppressFinalize(this); 
         }
+
+        private static IDbTransaction _transaction;
+        private readonly System.Data.Entity.DbContext _dbContext;
     }
 }

@@ -18,8 +18,7 @@
         model.name = this.name();
 
         if (datacontext == null || datacontext == undefined) return;
-        datacontext.saveCategory(model);
-        this.modal.close(model);
+        this.modal.close(datacontext.saveCategory(model));
     };
     
     AddCategoryViewModel.prototype.activate = function (dataModel) {

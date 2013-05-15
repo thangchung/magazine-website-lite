@@ -44,7 +44,28 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.0.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet">
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.0.13117\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -155,11 +176,14 @@
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="App_Start\Filters\SimpleAuthorizeAttribute.cs" />
     <Compile Include="App_Start\GlobalConfig.cs" />
     <Compile Include="App_Start\PageConfig.cs" />
     <Compile Include="App_Start\PageRouteConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebAppConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Apis\ItemApiController.cs" />
     <Compile Include="Controllers\Apis\DashboardApiController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -399,6 +423,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -413,9 +447,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
+      <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>
+      <Name>Cik.MagazineWeb.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\SharpLite.Domain\SharpLite.Domain.csproj">
       <Project>{6ABEA9CB-7E93-4EF2-89F0-34ED342CD1EB}</Project>
       <Name>SharpLite.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Cik.MagazineWeb.EntityFrameworkProvider\Cik.MagazineWeb.EntityFrameworkProvider.csproj">
+      <Project>{1C1C62C4-A5AA-42E9-B48E-8B8954C28792}</Project>
+      <Name>Cik.MagazineWeb.EntityFrameworkProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Cik.MagazineWeb.Init\Cik.MagazineWeb.Init.csproj">
       <Project>{3951C1B8-0351-4790-844E-5AD46641337F}</Project>

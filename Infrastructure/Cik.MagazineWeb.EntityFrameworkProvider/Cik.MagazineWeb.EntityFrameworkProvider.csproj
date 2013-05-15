@@ -47,25 +47,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreDbContext.cs" />
-    <Compile Include="Migrations\201304100315005_InitialCreate.cs" />
+    <None Include="Migrations\201304100315005_InitialCreate.cs__" />
     <Compile Include="Migrations\201304100315005_InitialCreate.Designer.cs">
-      <DependentUpon>201304100315005_InitialCreate.cs</DependentUpon>
+      <DependentUpon>201304100315005_InitialCreate.cs__</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304110312523_InitialCreate1.cs" />
+    <None Include="Migrations\201304110312523_InitialCreate1.cs__" />
     <Compile Include="Migrations\201304110312523_InitialCreate1.Designer.cs">
-      <DependentUpon>201304110312523_InitialCreate1.cs</DependentUpon>
+      <DependentUpon>201304110312523_InitialCreate1.cs__</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304110317326_InitialCreate11.cs" />
+    <None Include="Migrations\201304110317326_InitialCreate11.cs__" />
     <Compile Include="Migrations\201304110317326_InitialCreate11.Designer.cs">
-      <DependentUpon>201304110317326_InitialCreate11.cs</DependentUpon>
+      <DependentUpon>201304110317326_InitialCreate11.cs__</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304231156069_111.cs" />
+    <None Include="Migrations\201304231156069_111.cs__" />
     <Compile Include="Migrations\201304231156069_111.Designer.cs">
-      <DependentUpon>201304231156069_111.cs</DependentUpon>
+      <DependentUpon>201304231156069_111.cs__</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201304290820169_NewSchemaForItemContent.cs" />
+    <None Include="Migrations\201304290820169_NewSchemaForItemContent.cs__" />
     <Compile Include="Migrations\201304290820169_NewSchemaForItemContent.Designer.cs">
-      <DependentUpon>201304290820169_NewSchemaForItemContent.cs</DependentUpon>
+      <DependentUpon>201304290820169_NewSchemaForItemContent.cs__</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305140453482_AddedUserApplication20130514.cs" />
+    <Compile Include="Migrations\201305140453482_AddedUserApplication20130514.Designer.cs">
+      <DependentUpon>201305140453482_AddedUserApplication20130514.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305141037311_RemoveSomeRequireOnUser.cs" />
+    <Compile Include="Migrations\201305141037311_RemoveSomeRequireOnUser.Designer.cs">
+      <DependentUpon>201305141037311_RemoveSomeRequireOnUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305141053146_RemovePasswordRequireOnUser.cs" />
+    <Compile Include="Migrations\201305141053146_RemovePasswordRequireOnUser.Designer.cs">
+      <DependentUpon>201305141053146_RemovePasswordRequireOnUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305141105381_RemoveCreateByRequireOnUser.cs" />
+    <Compile Include="Migrations\201305141105381_RemoveCreateByRequireOnUser.Designer.cs">
+      <DependentUpon>201305141105381_RemoveCreateByRequireOnUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,19 +109,31 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201304100315005_InitialCreate.resx">
-      <DependentUpon>201304100315005_InitialCreate.cs</DependentUpon>
+      <DependentUpon>201304100315005_InitialCreate.cs__</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304110312523_InitialCreate1.resx">
-      <DependentUpon>201304110312523_InitialCreate1.cs</DependentUpon>
+      <DependentUpon>201304110312523_InitialCreate1.cs__</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304110317326_InitialCreate11.resx">
-      <DependentUpon>201304110317326_InitialCreate11.cs</DependentUpon>
+      <DependentUpon>201304110317326_InitialCreate11.cs__</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304231156069_111.resx">
-      <DependentUpon>201304231156069_111.cs</DependentUpon>
+      <DependentUpon>201304231156069_111.cs__</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201304290820169_NewSchemaForItemContent.resx">
-      <DependentUpon>201304290820169_NewSchemaForItemContent.cs</DependentUpon>
+      <DependentUpon>201304290820169_NewSchemaForItemContent.cs__</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305140453482_AddedUserApplication20130514.resx">
+      <DependentUpon>201305140453482_AddedUserApplication20130514.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305141037311_RemoveSomeRequireOnUser.resx">
+      <DependentUpon>201305141037311_RemoveSomeRequireOnUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305141053146_RemovePasswordRequireOnUser.resx">
+      <DependentUpon>201305141053146_RemovePasswordRequireOnUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305141105381_RemoveCreateByRequireOnUser.resx">
+      <DependentUpon>201305141105381_RemoveCreateByRequireOnUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

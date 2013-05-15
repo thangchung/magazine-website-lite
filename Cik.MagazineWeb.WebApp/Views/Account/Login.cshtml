@@ -1,0 +1,25 @@
+﻿@model Cik.MagazineWeb.Application.UserAuthentications.ViewModels.LoginViewModel 
+ 
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-signin"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h2 class="form-signin-heading">Please sign in</h2>
+    @Html.TextBoxFor(m => m.UserName, null, new {@class = "input-block-level", placeholder = "Username"})
+    @Html.ValidationMessageFor(m => m.UserName)
+
+    @Html.PasswordFor(m => m.Password, new {@class = "input-block-level", placeholder = "Password"})
+    @Html.ValidationMessageFor(m => m.Password)
+    <label class="checkbox">
+        @Html.CheckBoxFor(m => m.RememberMe)Remember me
+    </label>
+    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    <h5> 
+        @Html.ActionLink("Register", "Register") if you don't have an account. 
+    </h5>
+}

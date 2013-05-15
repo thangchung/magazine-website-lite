@@ -37,20 +37,20 @@
     }
 
     function addCategory(item) {
-        modelDialog
+        return modelDialog
             .show(new addCategoryModel())
             .then(function(response) {
-                return reloadListOfCategories();
+                reloadListOfCategories();
             });
     }
 
     function editCategory(dataRow) {
         var model = new editCategoryModel();
-        categoryDataContext
+        return categoryDataContext
             .getCategoryById(dataRow.id, model)
             .then(function(data) {
                 modelDialog.show(model).then(function(response) {
-                    return reloadListOfCategories();
+                    reloadListOfCategories();
                 });
             });
     }
@@ -60,11 +60,10 @@
             .showMessage('Do you want to delete?', 'Delete category', ['Yes', 'No'])
             .then(function(answer) {
                 if (answer === 'Yes') {
-                    return categoryDataContext.deleteCategory(id).then(function() {
-                        return reloadListOfCategories();
+                    categoryDataContext.deleteCategory(id).then(function() {
+                        reloadListOfCategories();
                     });
                 }
-                return null;
             });
     }
 
@@ -73,7 +72,7 @@
     }
     
     function reloadListOfCategories() {
-        return categoryDataContext.listOfCategories(buildParametters());
+        categoryDataContext.listOfCategories(buildParametters());
     }
 
     function buildParametters() {

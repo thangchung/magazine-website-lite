@@ -38,6 +38,7 @@
       <HintPath>..\Cik.MagazineWeb.WebApp\bin\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -53,7 +54,7 @@
     <Compile Include="Magazines\Dtos\CategorySummaryDto.cs" />
     <Compile Include="Magazines\Dtos\ItemDetailsDto.cs" />
     <Compile Include="Magazines\Dtos\ItemSummaryDto.cs" />
-    <Compile Include="Magazines\IMagazineApplication.cs" />
+    <Compile Include="IMagazineApplication.cs" />
     <Compile Include="Magazines\MagazineApplication.cs" />
     <Compile Include="Magazines\MagazineClientApplication.cs" />
     <Compile Include="Magazines\Profiles\CategoryProfile.cs" />
@@ -67,8 +68,15 @@
     <Compile Include="Magazines\ViewModels\FrontPageViewModelBase.cs" />
     <Compile Include="Magazines\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Magazines\ViewModels\ItemSummaryViewModel.cs" />
+    <Compile Include="IUserApplication.cs" />
+    <Compile Include="UserAuthentications\Dtos\UserDto.cs" />
+    <Compile Include="UserAuthentications\Profiles\UserProfile.cs" />
+    <Compile Include="UserAuthentications\UserApplication.cs" />
+    <Compile Include="UserAuthentications\ViewModels\AccountViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UserAuthentications\Services\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cik.MagazineWeb.Domain\Cik.MagazineWeb.Domain.csproj">
       <Project>{ED2B94E2-6E05-4D8C-9774-41A5499C5877}</Project>

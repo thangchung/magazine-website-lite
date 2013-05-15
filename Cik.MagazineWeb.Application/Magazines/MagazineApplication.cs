@@ -19,15 +19,6 @@ namespace Cik.MagazineWeb.Application.Magazines
         private readonly IRepository<Item> _itemRepository;
         private readonly IItemSummaryService _itemSummaryService;
 
-        //public MagazineApplication()
-        //    : this(DependencyResolver.Current.GetService<IRepository<Category>>(),
-        //            DependencyResolver.Current.GetService<IRepository<Item>>(), 
-        //            DependencyResolver.Current.GetService<IQueryForItemSummaries>(),
-        //            DependencyResolver.Current.GetService<IQueryForHottestItems>(),
-        //            DependencyResolver.Current.GetService<IQueryForLatestItems>())
-        //{
-        //}
-
         public MagazineApplication(
             IRepository<Category> categoryRepository, 
             IRepository<Item> itemRepository, 
@@ -74,38 +65,46 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         public void SaveCategory(CategorySummaryDto dto)
         {
-            Category newEntity = null;
-
-            if (dto.Id > 0)
+            using (var context = _categoryRepository.DbContext)
             {
-                var oldEntity = GetCategoryById(dto.Id);
-                if (oldEntity == null) return;
-                newEntity = dto.MapTo<Category>();
-                newEntity.CreatedBy = oldEntity.CreatedBy;
-                if (oldEntity.CreatedDate != null) newEntity.CreatedDate = oldEntity.CreatedDate.Value;
-                newEntity.ModifiedBy = "thangchung"; // need to remove hard code
-                newEntity.ModifiedDate = DateTime.Now;
-            }
-            else
-            {
-                newEntity = dto.MapTo<Category>();
-                newEntity.CreatedBy = "thangchung"; // need to remove hard code
-                newEntity.CreatedDate = DateTime.Now;
-            }
+                Category newEntity = null;
 
-            _categoryRepository.SaveOrUpdate(newEntity);
-            _categoryRepository.DbContext.CommitChanges();
+                if (dto.Id > 0)
+                {
+                    var oldEntity = GetCategoryById(dto.Id); // this is actually not a valid way
+                    if (oldEntity == null) return;
+                    newEntity = dto.MapTo<Category>();
+                    newEntity.CreatedBy = oldEntity.CreatedBy;
+                    if (oldEntity.CreatedDate != null) newEntity.CreatedDate = oldEntity.CreatedDate.Value;
+                    newEntity.ModifiedBy = "thangchung"; // need to remove hard code
+                    newEntity.ModifiedDate = DateTime.Now;
+                }
+                else
+                {
+                    newEntity = dto.MapTo<Category>();
+                    newEntity.CreatedBy = "thangchung"; // need to remove hard code
+                    newEntity.CreatedDate = DateTime.Now;
+                }
+
+                _categoryRepository.SaveOrUpdate(newEntity);
+
+                context.CommitChanges();
+            }
         }
 
         public void DeleteCategory(int id)
         {
             if (id <= 0) return; // should handle exception here
 
-            var entity = _categoryRepository.Get(id);
-            if (entity == null) return; // should handle exception here
+            using (var context = _categoryRepository.DbContext)
+            {
+                var entity = _categoryRepository.Get(id);
+                if (entity == null) return; // should handle exception here
 
-            _categoryRepository.Delete(entity);
-            _categoryRepository.DbContext.CommitChanges();
+                _categoryRepository.Delete(entity);
+
+                context.CommitChanges();
+            }
         }
 
         #endregion

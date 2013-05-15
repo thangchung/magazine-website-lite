@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
-using System.Data.Entity.Design.PluralizationServices;
 using System.Data.Entity.Infrastructure;
-using System.Globalization;
 using System.Linq;
 using SharpLite.Domain;
 using SharpLite.Domain.DataInterfaces;
@@ -17,19 +15,6 @@ namespace SharpLite.EntityFrameworkProvider
 
     public class RepositoryWithTypedId<T, TId> : IRepositoryWithTypedId<T, TId> where T : class, IEntityWithTypedId<TId>
     {
-        #region variables & ctors
-
-        private System.Data.Entity.DbContext _dbContext;
-        private Collection<string> Includes { get; set; }
-        private readonly string _connectionStringName;
-        private readonly PluralizationService _pluralizer = PluralizationService.CreateService(CultureInfo.GetCultureInfo("en")); 
-
-        public RepositoryWithTypedId(string connectionStringName)
-        {
-            _connectionStringName = connectionStringName;
-            Includes = new Collection<string>();
-        }
-
         public RepositoryWithTypedId(System.Data.Entity.DbContext dbContext)
         {
             if (dbContext == null) throw new ArgumentNullException("dbContext may not be null");
@@ -38,21 +23,10 @@ namespace SharpLite.EntityFrameworkProvider
             Includes = new Collection<string>();
         }
 
-        #endregion
-
-        #region public components
-
         public virtual IDbContext DbContext
         {
             get
             {
-                if (_dbContext == null)
-                {
-                    if (_connectionStringName == string.Empty)
-                        _dbContext = DbContextManager.Current;
-                    else
-                        _dbContext = DbContextManager.CurrentFor(_connectionStringName);
-                }
                 return new DbContext(_dbContext);
             }
         }
@@ -62,20 +36,18 @@ namespace SharpLite.EntityFrameworkProvider
             return SelectedSetWithIncludes.AsEnumerable().Single(entity => id.Equals(entity.Id));
         }
 
-        public virtual IQueryable<T> GetAll() {
+        public virtual IQueryable<T> GetAll()
+        {
             return SelectedSetWithIncludes;
         }
 
-        public virtual T SaveOrUpdate(T entity) {
+        public virtual T SaveOrUpdate(T entity)
+        {
             if (entity == null)
                 return null;
 
-            // if (entity.IsTransient())
-            // _dbContext.Set<T>().Add(entity);
-            if (entity.Id == null || entity.Id.Equals(default(TId)))
-                Add(entity);
-            else
-                Update(entity);
+            if (entity.IsTransient())
+                _dbContext.Set<T>().Add(entity);
 
             return entity;
         }
@@ -86,7 +58,8 @@ namespace SharpLite.EntityFrameworkProvider
         /// likely handle and inform the user about.  Accordingly, this tries to delete right away; if there
         /// is a foreign key constraint preventing the deletion, an exception will be thrown.
         /// </summary>
-        public virtual void Delete(T entity) {
+        public virtual void Delete(T entity)
+        {
             _dbContext.Set<T>().Remove(entity);
             _dbContext.SaveChanges();
         }
@@ -100,36 +73,6 @@ namespace SharpLite.EntityFrameworkProvider
             Includes.Add(subTableName);
 
             return this;
-        }
-
-        #endregion
-
-        #region private functions
-
-        private void Add(T entity)
-        {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
-            _dbContext.Set<T>().Add(entity);
-        } 
-
-        private void Update(T entity)
-        {
-            var fqen = GetEntityName<T>();
-
-            object originalItem;
-            var key = ((IObjectContextAdapter)_dbContext).ObjectContext.CreateEntityKey(fqen, entity);
-            if (((IObjectContextAdapter)_dbContext).ObjectContext.TryGetObjectByKey(key, out originalItem))
-            {
-                ((IObjectContextAdapter)_dbContext).ObjectContext.ApplyCurrentValues(key.EntitySetName, entity);
-            }
-        } 
-
-        private string GetEntityName<T>()
-        {
-            return string.Format("{0}.{1}", ((IObjectContextAdapter)_dbContext).ObjectContext.DefaultContainerName, _pluralizer.Pluralize(typeof(T).Name));
         }
 
         private DbQuery<T> SelectedSetWithIncludes
@@ -147,6 +90,7 @@ namespace SharpLite.EntityFrameworkProvider
             }
         }
 
-        #endregion
+        private readonly System.Data.Entity.DbContext _dbContext;
+        private Collection<string> Includes { get; set; }
     }
 }

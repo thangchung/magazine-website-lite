@@ -4,6 +4,7 @@
             activate: activate,
             router: router,
             search: search,
+            logOff: logOff
         };
         
         return shell;
@@ -15,6 +16,10 @@
         
         function search() {
             app.showMessage('Search not yet implemented...');
+        }
+        
+        function logOff() {
+            $('<form action="/Account/LogOff"></form>').appendTo('body').submit();
         }
 
         function boot() {

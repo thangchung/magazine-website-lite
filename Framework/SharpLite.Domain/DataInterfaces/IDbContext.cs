@@ -7,7 +7,7 @@ namespace SharpLite.Domain.DataInterfaces
     /// If you're using the NHibernateSessionModule HttpModule, then the transaction 
     /// opening/committing will be taken care of for you.
     /// </summary>
-    public interface IDbContext
+    public interface IDbContext : IDisposable
     {
         IDisposable BeginTransaction();
         void CommitChanges();

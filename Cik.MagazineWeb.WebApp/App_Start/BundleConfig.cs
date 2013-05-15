@@ -13,6 +13,10 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/scripts/jquery-{version}.js"));
 
+            // Modernizr goes separate since it loads first
+            bundles.Add(new ScriptBundle("~/bundles/modernizr")
+                .Include("~/Scripts/modernizr-{version}.js"));
+
             bundles.Add(
                 new ScriptBundle("~/andia-agency/scripts")
                     .Include("~/andia-agency/assets/js/jquery-1.8.2.min.js")

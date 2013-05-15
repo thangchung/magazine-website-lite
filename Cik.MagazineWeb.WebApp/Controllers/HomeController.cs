@@ -1,5 +1,5 @@
 using System.Web.Mvc;
-using Cik.MagazineWeb.Application.Magazines;
+using Cik.MagazineWeb.Application;
 using Cik.MagazineWeb.Utilities;
 using ControllerBase = Cik.MagazineWeb.Utilities.ControllerBase;
 

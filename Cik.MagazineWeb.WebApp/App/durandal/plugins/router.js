@@ -280,7 +280,19 @@
                 });
 
                 sammy._checkFormSubmission = function () {
-                    return false;
+                    // return false;
+                    
+                    // TODO: I modify code here for fix bug on form submition
+                    // reference https://groups.google.com/forum/?fromgroups=#!topic/sammyjs/EYW-2Ygk3z8
+                    var $form, path, verb;
+                    $form = $('form');
+                    path = $form.attr("action");
+                    verb = this._getFormVerb($form);
+                    if (verb === "get" && !path.startsWith("#")) {
+                        return false;
+                    } else {
+                        return this.defaultCheckFormSubmission($form);
+                    }
                 };
 
                 sammy.log = function () {

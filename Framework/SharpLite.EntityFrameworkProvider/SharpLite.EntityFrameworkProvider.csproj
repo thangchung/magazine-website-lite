@@ -56,13 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContext.cs" />
-    <Compile Include="DbContextBuilder.cs" />
-    <Compile Include="DbContextManager.cs" />
-    <Compile Include="EntityDuplicateChecker.cs" />
-    <Compile Include="IDbContextStorage.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <None Include="OldCodes\DbContext.cs__" />
+    <Compile Include="DbContext.cs" />
+    <None Include="OldCodes\DbContextBuilder.cs__" />
+    <None Include="OldCodes\DbContextManager.cs__" />
+    <Compile Include="EntityDuplicateChecker.cs" />
+    <None Include="OldCodes\IDbContextStorage.cs__" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="OldCodes\Repository.cs__" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpLite.Domain\SharpLite.Domain.csproj">

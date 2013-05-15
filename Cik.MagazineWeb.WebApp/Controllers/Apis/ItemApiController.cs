@@ -1,12 +1,16 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
-using Cik.MagazineWeb.Application.Magazines;
+using Cik.MagazineWeb.Application;
 using Cik.MagazineWeb.Application.Magazines.ViewModels;
+using Cik.MagazineWeb.Domain.UserMgmt;
 using Cik.MagazineWeb.Utilities;
+using Cik.MagazineWeb.WebApp.App_Start.Filters;
 
 namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 {
+    [SimpleAuthorize(Role.Administrator)]
     public class ItemApiController : ApiControllerBase
     {
         private readonly IMagazineApplication _magazineApp;
@@ -19,9 +23,9 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
         }
         
         [HttpGet]
-        public ItemSummaryViewModel ItemPaging(int page)
+        public async Task<ItemSummaryViewModel> ItemPaging(int page)
         {
-            var viewModel = _magazineApp.GetItemSummaryPaging(PageSize, page);
+            var viewModel = await Task.Run(() => _magazineApp.GetItemSummaryPaging(PageSize, page));
             if (viewModel != null)
             {
                 return viewModel;

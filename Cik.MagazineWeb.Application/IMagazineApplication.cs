@@ -2,7 +2,7 @@
 using Cik.MagazineWeb.Application.Magazines.Dtos;
 using Cik.MagazineWeb.Application.Magazines.ViewModels;
 
-namespace Cik.MagazineWeb.Application.Magazines
+namespace Cik.MagazineWeb.Application
 {
     public interface IMagazineApplication
     {

@@ -57,6 +57,8 @@
     <Compile Include="Configurations\IConfigurationManager.cs" />
     <Compile Include="Configurations\Impl\ConfigurationManager.cs" />
     <Compile Include="ControllerBase.cs" />
+    <Compile Include="Encyption\IEncrypting.cs" />
+    <Compile Include="Encyption\Impl\SimpleEncryptor.cs" />
     <Compile Include="Extensions\AutofacExtensions.cs" />
     <Compile Include="Extensions\AutoMapperExtensions.cs" />
     <Compile Include="Extensions\ConvertExtensions.cs" />

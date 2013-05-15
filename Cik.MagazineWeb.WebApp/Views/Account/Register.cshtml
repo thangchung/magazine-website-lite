@@ -1,0 +1,28 @@
+﻿@model Cik.MagazineWeb.Application.UserAuthentications.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-signin"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h2 class="form-signin-heading">Create an account</h2>
+    
+    @Html.TextBoxFor(m => m.UserName, null, new {@id="register-user-name", @class = "input-block-level", placeholder = "Username"})
+    @Html.ValidationMessageFor(m => m.UserName)
+
+    @Html.PasswordFor(m => m.Password, new {@id="register-password", @class = "input-block-level", placeholder = "Password"})
+    @Html.ValidationMessageFor(m => m.Password)
+
+    @Html.PasswordFor(m => m.ConfirmPassword, new {@id="register-confirmed-password", @class = "input-block-level", placeholder = "Confirm password"})
+    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+    
+    <button class="btn btn-large btn-primary" type="submit">Register</button>
+    
+    <h5> 
+        @Html.ActionLink("Login", "Login") return to login. 
+    </h5>
+}
