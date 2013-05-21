@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
     <Compile Include="DtoBase.cs" />
-    <Compile Include="Magazines\Dtos\CategoryDetailDto.cs" />
+    <Compile Include="Magazines\Dtos\CategoryDetailsDto.cs" />
     <Compile Include="Magazines\Dtos\CategorySummaryDto.cs" />
     <Compile Include="Magazines\Dtos\ItemDetailsDto.cs" />
     <Compile Include="Magazines\Dtos\ItemSummaryDto.cs" />
