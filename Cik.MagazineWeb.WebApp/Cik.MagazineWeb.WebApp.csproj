@@ -330,11 +330,14 @@
     <Content Include="App\main.js" />
     <Content Include="App\dataservices\categorydataservice.js" />
     <Content Include="App\models\categorymodel.js" />
+    <Content Include="App\models\itemmodel.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\viewmodels\addcategorymodel.js" />
+    <Content Include="App\viewmodels\additemmodel.js" />
     <Content Include="App\viewmodels\items.js" />
     <Content Include="App\viewmodels\editcategorymodel.js" />
     <Content Include="App\views\addcategorymodel.html" />
+    <Content Include="App\views\additemmodel.html" />
     <Content Include="App\views\items.html" />
     <Content Include="App\views\editcategorymodel.html" />
     <Content Include="Scripts\utilities.js" />

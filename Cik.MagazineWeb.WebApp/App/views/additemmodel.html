@@ -1,0 +1,32 @@
+﻿<div class="messageBox">
+    <div class="modal-header">
+        <h3>Add new item</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <fieldset>
+                <legend></legend>
+                <label>Title</label>
+                <input data-bind="value: title" type="text" placeholder="Type something…">
+                <label>Short Description</label>
+                <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
+                <label>Short Description</label>
+                <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
+                <label>Content</label>
+                <input data-bind="value: content" type="text" placeholder="Type something…">
+                <label>Small Image</label>
+                <input data-bind="value: smallimageurl" type="file" name="image">
+                <label>Medium Image</label>
+                <input data-bind="value: mediumimageurl" type="file" name="image">
+                <label>Big Image</label>
+                <input data-bind="value: bigimageurl" type="file" name="image">
+                <label>Number Of View</label>
+                <input data-bind="value: numberofview" type="checkbox" name="No Of View">
+                <div>
+                    <button data-bind="click: save" type="button" class="btn">Save</button>
+                    <button data-bind="click: close" type="button" class="btn">Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
