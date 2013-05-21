@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Cik.MagazineWeb.Application;
+using Cik.MagazineWeb.Application.Magazines.Dtos;
 using Cik.MagazineWeb.Application.Magazines.ViewModels;
 using Cik.MagazineWeb.Domain.UserMgmt;
 using Cik.MagazineWeb.Utilities;
@@ -22,11 +23,16 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 
             _magazineApp = magazineApp;
         }
-        
+
+        #region Public Category Api
+
+        // Note: Copied From DashboardApiController class by Toan Le on 21/05/2013
+
         [HttpGet]
-        public async Task<CategorySummaryViewModel> CategoriesPaging(int page)
+        public CategorySummaryViewModel CategoryPaging(int page)
         {
-            var viewModel = await Task.Run(() => _magazineApp.GetCategoryPaging(this.PageSize, page));
+            var viewModel = _magazineApp.GetCategoryPaging(PageSize, page);
+
             if (viewModel != null)
             {
                 return viewModel;
@@ -34,5 +40,31 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 
             throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
         }
+
+        [HttpGet]
+        public async Task<CategorySummaryDto> GetCategoryById(int id)
+        {
+            var dto = await Task.Run(() => _magazineApp.GetCategoryById(id));
+            if (dto != null)
+            {
+                return dto;
+            }
+
+            throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+        }
+
+        [HttpPost]
+        public void SaveCategory(CategorySummaryDto dto)
+        {
+            _magazineApp.SaveCategory(dto);
+        }
+
+        [HttpGet]
+        public void DeleteCategory(int id)
+        {
+            _magazineApp.DeleteCategory(id);
+        }
+
+        #endregion
     }
 }

@@ -14,15 +14,17 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
     // [SimpleAuthorize(Role.Administrator)]
     public class DashboardApiController : ApiControllerBase
     {
-        private readonly IMagazineApplication _magazineApp;
+        //private readonly IMagazineApplication _magazineApp;
 
-        public DashboardApiController(IMagazineApplication magazineApp)
-        {
-            Guard.ArgumentNotNull(magazineApp, "MagazineApplication");
+        //public DashboardApiController(IMagazineApplication magazineApp)
+        //{
+        //    Guard.ArgumentNotNull(magazineApp, "MagazineApplication");
 
-            _magazineApp = magazineApp;
-        }
+        //    _magazineApp = magazineApp;
+        //}
 
+        // Todo: The Logic code below was moved to Category Api by Toan Le on 21/05/2013
+        /*
         [HttpGet]
         public CategorySummaryViewModel CategoryPaging(int page)
         {
@@ -59,5 +61,7 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
         {
             _magazineApp.DeleteCategory(id);
         }
+
+        */
     }
 }
