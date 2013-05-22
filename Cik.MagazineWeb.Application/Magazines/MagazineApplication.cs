@@ -8,6 +8,7 @@ using Cik.MagazineWeb.Domain.MagazineMgmt;
 using Cik.MagazineWeb.Utilities;
 using Cik.MagazineWeb.Utilities.DateTime;
 using Cik.MagazineWeb.Utilities.Extensions;
+using SharpLite.Domain;
 using SharpLite.Domain.DataInterfaces;
 
 namespace Cik.MagazineWeb.Application.Magazines
@@ -154,7 +155,7 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         public void SaveItem(ItemDetailsDto dto)
         {
-            using (var context = _itemRepository.DbContext)
+            using (var context = )
             {
                 Item itemEntity = null;
                 ItemContent itemContentEntity = null;
@@ -199,15 +200,16 @@ namespace Cik.MagazineWeb.Application.Magazines
                             Category = _categoryRepository.Get(dto.CategoryId),
                             CreatedBy = "Actor Login",
                             CreatedDate = DatetimeRegion.GetCurrentTime(),
+                            ItemContent = itemContentEntity
                         };
                 }
 
-                _itemContentRepository.SaveOrUpdate(itemContentEntity);
+                // _itemContentRepository.SaveOrUpdate(itemContentEntity);
                 // Add new Case
-                if (dto.Id == 0) itemEntity.ItemContentId = itemContentEntity.Id;
+                //if (dto.Id == 0) itemEntity.ItemContentId = itemContentEntity.Id;
                 _itemRepository.SaveOrUpdate(itemEntity);
 
-                context.CommitChanges();
+                // context.CommitChanges();
             }
         }
 
