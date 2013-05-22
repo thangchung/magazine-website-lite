@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Cik.MagazineWeb.Application;
+using Cik.MagazineWeb.Application.Magazines.Dtos;
 using Cik.MagazineWeb.Application.Magazines.ViewModels;
 using Cik.MagazineWeb.Domain.UserMgmt;
 using Cik.MagazineWeb.Utilities;
@@ -22,6 +23,8 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
             _magazineApp = magazineApp;
         }
         
+        #region Public Item APIs
+
         [HttpGet]
         public async Task<ItemSummaryViewModel> ItemPaging(int page)
         {
@@ -33,5 +36,31 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
 
             throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
         }
+
+        [HttpGet]
+        public async Task<ItemDetailsDto> GetItemById(int id)
+        {
+            var dto = await Task.Run(() => _magazineApp.GetItemById(id));
+            if (dto != null)
+            {
+                return dto;
+            }
+
+            throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+        }
+
+        [HttpPost]
+        public void SaveItem(ItemDetailsDto dto)
+        {
+            _magazineApp.SaveItem(dto);
+        }
+
+        [HttpGet]
+        public void DeleteItem(int id)
+        {
+            _magazineApp.DeleteItem(id);
+        }
+
+        #endregion
     }
 }

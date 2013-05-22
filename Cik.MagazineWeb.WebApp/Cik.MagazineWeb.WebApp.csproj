@@ -186,7 +186,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Apis\CategoryApiController.cs" />
     <Compile Include="Controllers\Apis\ItemApiController.cs" />
-    <Compile Include="Controllers\Apis\DashboardApiController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

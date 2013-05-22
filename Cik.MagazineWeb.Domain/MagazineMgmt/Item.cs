@@ -5,7 +5,7 @@ namespace Cik.MagazineWeb.Domain.MagazineMgmt
 {
     public class Item : AuditEntity
     {
-        protected Item(){ }
+        public Item(){ }
 
         public virtual int ItemContentId { get; set; }
 

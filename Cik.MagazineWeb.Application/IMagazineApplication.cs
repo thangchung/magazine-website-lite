@@ -8,6 +8,8 @@ namespace Cik.MagazineWeb.Application
     {
         #region admin page
 
+        #region category
+
         IEnumerable<CategorySummaryDto> GetCategorySummaries();
 
         CategorySummaryDto GetCategoryById(int id);
@@ -18,7 +20,19 @@ namespace Cik.MagazineWeb.Application
 
         void DeleteCategory (int id);
 
+        #endregion
+
+        #region item
+
         ItemSummaryViewModel GetItemSummaryPaging(int pageSize, int page);
+
+        ItemDetailsDto GetItemById(int id);
+
+        void SaveItem(ItemDetailsDto dto);
+
+        void DeleteItem(int id);
+
+        #endregion
 
         #endregion
 

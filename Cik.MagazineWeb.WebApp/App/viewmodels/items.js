@@ -14,17 +14,14 @@
             pagers: ko.observableArray([]),
             currentPage: ko.observable(0),
             totalRecord: ko.observable(0),
-            paging: paging,
-            addItem: addItem
-        }
+            paging: paging
+        },
+        addItem: addItem
     };
 
     return ItemsViewModel;
 
     //#region Internal Methods
-
-    // Implement Add Item feture
-    // Added by Toan Le on 21/05/2013
     function addItem(item) {
         return modelDialog
             .show(new addItemModel())

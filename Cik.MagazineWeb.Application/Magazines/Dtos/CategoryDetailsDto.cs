@@ -1,8 +1,6 @@
-﻿using Cik.MagazineWeb.Domain;
-
-namespace Cik.MagazineWeb.Application.Magazines.Dtos
+﻿namespace Cik.MagazineWeb.Application.Magazines.Dtos
 {
-    public class CategoryDetailsDto : AuditEntity
+    public class CategoryDetailsDto : DtoBase
     {
         public string Name { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace Cik.MagazineWeb.Application.Magazines.Dtos
 {
-    public class ItemSummaryDto : AuditEntity
+    public class ItemSummaryDto : DtoBase
     {
         public int CategoryId { get; set; }
 

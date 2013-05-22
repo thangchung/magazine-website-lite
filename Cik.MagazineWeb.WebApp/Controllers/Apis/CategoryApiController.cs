@@ -24,9 +24,7 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
             _magazineApp = magazineApp;
         }
 
-        #region Public Category Api
-
-        // Note: Copied From DashboardApiController class by Toan Le on 21/05/2013
+        #region Public Category APIs
 
         [HttpGet]
         public CategorySummaryViewModel CategoryPaging(int page)

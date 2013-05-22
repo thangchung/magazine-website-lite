@@ -1,16 +1,20 @@
-﻿using Cik.MagazineWeb.Domain;
-
-namespace Cik.MagazineWeb.Application.Magazines.Dtos
+﻿namespace Cik.MagazineWeb.Application.Magazines.Dtos
 {
-    public class ItemDetailsDto : AuditEntity
+    public class ItemDetailsDto : DtoBase
     {
+        public int CategoryId { get; set; }
+
         public string Title { get; set; }
 
         public string ShortDescription { get; set; }
 
         public string Content { get; set; }
 
-        public string SmallImage { get; set; }
+        public string SmallImageUrl { get; set; }
+
+        public string MediumImageUrl { get; set; }
+
+        public string BigImageUrl { get; set; }
 
         public long NumOfView { get; set; }
     }

@@ -60,7 +60,7 @@ namespace Cik.MagazineWeb.Application.Magazines.Services
                         {
                             Title = item.ItemContent.Title,
                             Content = item.ItemContent.Content,
-                            SmallImage = item.ItemContent.SmallImage
+                            SmallImageUrl = item.ItemContent.SmallImage
                         }).FirstOrDefault();
         }
 

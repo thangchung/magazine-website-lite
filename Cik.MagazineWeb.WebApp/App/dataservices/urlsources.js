@@ -32,6 +32,13 @@ define(function (require) {
         listOfItemsUrl: function (page) {
             return Utilities.rootUrl + 'api/itemapi/itempaging/?page=' + page;
         },
+        getItemByIdUrl: function (id) {
+            return Utilities.rootUrl + 'api/itemapi/getitembyid/?id=' + id;
+        },
+        saveItemUrl: Utilities.rootUrl + 'api/itemapi/saveitem',
+        deleteItemUrl: function (id) {
+            return Utilities.rootUrl + 'api/itemapi/deleteItem/?id=' + id;
+        },
     };
 
     return UrlSources;
