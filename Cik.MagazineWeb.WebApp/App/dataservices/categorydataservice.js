@@ -5,6 +5,10 @@ define(function (require) {
     
     // CategoryDataService class
     var CategoryDataService = {
+        getAllCategories: function () {
+            var serviceUrl = urlSources.getAllCategoriesUrl();
+            return http.get(serviceUrl);
+        },
         listOfCategories: function (params) {
             var serviceUrl = urlSources.listOfCategoriesUrl(params.page);
             return http.get(serviceUrl);

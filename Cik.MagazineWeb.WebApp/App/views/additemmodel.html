@@ -10,8 +10,12 @@
                 <input data-bind="value: title" type="text" placeholder="Type something…">
                 <label>Short Description</label>
                 <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
-                <label>Short Description</label>
-                <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
+
+                <label>Category</label>
+                <select data-bind="foreach: categories">
+                    <option data-bind="attr: { value: id } {text: name}" ></option>
+                </select>
+
                 <label>Content</label>
                 <input data-bind="value: content" type="text" placeholder="Type something…">
                 <label>Small Image</label>
@@ -20,8 +24,6 @@
                 <input data-bind="value: mediumimageurl" type="file" name="image">
                 <label>Big Image</label>
                 <input data-bind="value: bigimageurl" type="file" name="image">
-                <label>Number Of View</label>
-                <input data-bind="value: numberofview" type="checkbox" name="No Of View">
                 <div>
                     <button data-bind="click: save" type="button" class="btn">Save</button>
                     <button data-bind="click: close" type="button" class="btn">Cancel</button>

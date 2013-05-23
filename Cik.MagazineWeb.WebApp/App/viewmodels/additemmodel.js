@@ -1,7 +1,8 @@
 ﻿define(function (require) {
     "use strict";
     // include components
-    var dataContext = require("datacontexts/itemdatacontext");
+    var itemDataContext = require("datacontexts/itemdatacontext");
+    var categoryDataContext = require("datacontexts/categorydatacontext");
     var itemModel = require("models/itemmodel");
 
     // AddItemViewModel class
@@ -14,7 +15,13 @@
         this.smallimageurl = ko.observable('');
         this.mediumimageurl = ko.observable('');
         this.bigimageurl = ko.observable('');
-        this.numberofview = ko.observable(false);
+        this.categories = categoryDataContext.getAllCategories();
+    };
+    
+    function person(id, name, age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     };
 
     AddItemViewModel.prototype.close = function () {
@@ -33,13 +40,27 @@
         model.bigimageurl = this.bigimageurl;
         model.numberofview = this.numberofview;
 
-        if (dataContext == null || dataContext == undefined) return;
-        this.modal.close(dataContext.saveItem(model));
+        if (itemDataContext == null || itemDataContext == undefined) return;
+        this.modal.close(itemDataContext.saveItem(model));
     };
 
-    AddItemViewModel.prototype.activate = function (dataModel) {
+    AddItemViewModel.prototype.activate = function () {
+        //return AddItemViewModel.prototype.getAllCategories();
         return true;
     };
+
+    AddItemViewModel.prototype.getAllCategories = function () {
+        categoryDataContext.getAllCategories(this.categories);
+    };
+
+    //function buildParametters() {
+    //    return {
+    //        categories: CategoriesViewModel.categoryList.categories,
+    //        totalPage: CategoriesViewModel.categoryList.totalCategory,
+    //        page: CategoriesViewModel.categoryList.currentPage,
+    //        pagers: CategoriesViewModel.categoryList.pagers
+    //    };
+    //}
 
     return AddItemViewModel;
 });

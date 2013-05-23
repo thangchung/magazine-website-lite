@@ -3,6 +3,9 @@ define(function (require) {
     var UrlSources = {
         
         // category urls
+        getAllCategoriesUrl: function (page) {
+            return Utilities.rootUrl + 'api/categoryapi/getallcategories';
+        },
         listOfCategoriesUrl: function (page) {
             return Utilities.rootUrl + 'api/categoryapi/categorypaging/?page=' + page;
         },

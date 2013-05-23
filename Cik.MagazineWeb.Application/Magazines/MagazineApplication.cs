@@ -155,7 +155,7 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         public void SaveItem(ItemDetailsDto dto)
         {
-            using (var context = )
+            using (var context = _itemRepository.DbContext)
             {
                 Item itemEntity = null;
                 ItemContent itemContentEntity = null;
@@ -204,9 +204,9 @@ namespace Cik.MagazineWeb.Application.Magazines
                         };
                 }
 
-                // _itemContentRepository.SaveOrUpdate(itemContentEntity);
+                _itemContentRepository.SaveOrUpdate(itemContentEntity);
                 // Add new Case
-                //if (dto.Id == 0) itemEntity.ItemContentId = itemContentEntity.Id;
+                if (dto.Id == 0) itemEntity.ItemContent = itemContentEntity;
                 _itemRepository.SaveOrUpdate(itemEntity);
 
                 // context.CommitChanges();

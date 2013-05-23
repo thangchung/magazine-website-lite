@@ -11,6 +11,11 @@ define(function (require) {
                 params.pagers(Utilities.buildPager(data.totalPage));
             });
         },
+        getAllCategories: function () {
+            return categoryDataService.getAllCategories().then(function (data) {
+                return ko.observableArray(data);
+            });
+        },
         getCategoryById: function(id, categoryModel) {
             return categoryDataService.getCategoryById(id).then(function(data) {
                 categoryModel.id(data.id);

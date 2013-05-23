@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -25,6 +26,19 @@ namespace Cik.MagazineWeb.WebApp.Controllers.Apis
         }
 
         #region Public Category APIs
+
+        [HttpGet]
+        public async Task<IEnumerable<CategorySummaryDto>> GetAllCategories()
+        {
+            var categories = await Task.Run(() => _magazineApp.GetCategorySummaries()); ;
+
+            if (categories != null)
+            {
+                return categories;
+            }
+
+            throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+        }
 
         [HttpGet]
         public CategorySummaryViewModel CategoryPaging(int page)
