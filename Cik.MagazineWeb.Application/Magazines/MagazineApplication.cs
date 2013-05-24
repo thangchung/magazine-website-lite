@@ -199,8 +199,7 @@ namespace Cik.MagazineWeb.Application.Magazines
                         {
                             Category = _categoryRepository.Get(dto.CategoryId),
                             CreatedBy = "Actor Login",
-                            CreatedDate = DatetimeRegion.GetCurrentTime(),
-                            ItemContent = itemContentEntity
+                            CreatedDate = DatetimeRegion.GetCurrentTime()
                         };
                 }
 
@@ -209,7 +208,7 @@ namespace Cik.MagazineWeb.Application.Magazines
                 if (dto.Id == 0) itemEntity.ItemContent = itemContentEntity;
                 _itemRepository.SaveOrUpdate(itemEntity);
 
-                // context.CommitChanges();
+                context.CommitChanges();
             }
         }
 

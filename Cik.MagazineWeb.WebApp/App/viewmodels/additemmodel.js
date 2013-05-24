@@ -15,19 +15,13 @@
         this.smallimageurl = ko.observable('');
         this.mediumimageurl = ko.observable('');
         this.bigimageurl = ko.observable('');
-        // this.categories = personArray; //ko.observableArray(personArray); //categoryDataContext.getAllCategories();
-    };
-    
-    function person(id, name, age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
+        this.categories = ko.observableArray([]);
+        this.categoryId = ko.observable(0);
     };
 
-    var personArray =
-        [new person(1, "1", 1),
-        new person(2, "2", 2),
-        new person(3, "3", 3)];
+    AddItemViewModel.prototype.activate = function () {
+        return categoryDataContext.getAllCategories(this.categories);
+    };
     
     AddItemViewModel.prototype.close = function () {
         this.modal.close();
@@ -44,28 +38,11 @@
         model.mediumimageurl = this.mediumimageurl;
         model.bigimageurl = this.bigimageurl;
         model.numberofview = this.numberofview;
+        model.categoryid = this.categoryId;
 
         if (itemDataContext == null || itemDataContext == undefined) return;
         this.modal.close(itemDataContext.saveItem(model));
     };
-
-    AddItemViewModel.prototype.activate = function () {
-        //return AddItemViewModel.prototype.getAllCategories();
-        return true;
-    };
-
-    AddItemViewModel.prototype.getAllCategories = function () {
-        categoryDataContext.getAllCategories(this.categories);
-    };
-
-    //function buildParametters() {
-    //    return {
-    //        categories: CategoriesViewModel.categoryList.categories,
-    //        totalPage: CategoriesViewModel.categoryList.totalCategory,
-    //        page: CategoriesViewModel.categoryList.currentPage,
-    //        pagers: CategoriesViewModel.categoryList.pagers
-    //    };
-    //}
 
     return AddItemViewModel;
 });

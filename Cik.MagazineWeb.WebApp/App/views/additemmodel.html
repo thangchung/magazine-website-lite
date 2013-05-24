@@ -8,28 +8,27 @@
                 <legend></legend>
                 <label>Title</label>
                 <input data-bind="value: title" type="text" placeholder="Type something…">
-                <label>Short Description</label>
-                <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
 
-                <label>Category</label>
-                <!--<select data-bind="foreach: categories">
-                        <option data-bind="attr: { value: id } {text: name}" ></option>
-                    </select>-->
-                
-                <select>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                    <option value="3">Category 3</option>
-                </select>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <label>Short Description</label>
+                        <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
+                        <label>Category</label>
+                        <select data-bind="options: categories, optionsText: 'name', optionsValue: 'id', optionsCaption: 'Choose...', value: categoryId" />
+                        <label>Content</label>
+                        <input data-bind="value: content" type="text" placeholder="Type something…">
+                    </div>
 
-                <label>Content</label>
-                <input data-bind="value: content" type="text" placeholder="Type something…">
-                <label>Small Image</label>
-                <input data-bind="value: smallimageurl" type="file" name="image">
-                <label>Medium Image</label>
-                <input data-bind="value: mediumimageurl" type="file" name="image">
-                <label>Big Image</label>
-                <input data-bind="value: bigimageurl" type="file" name="image">
+                    <div class="span6">
+                        <label>Small Image</label>
+                        <input data-bind="value: smallimageurl" type="file" name="image">
+                        <label>Medium Image</label>
+                        <input data-bind="value: mediumimageurl" type="file" name="image">
+                        <label>Big Image</label>
+                        <input data-bind="value: bigimageurl" type="file" name="image">
+                    </div>
+                </div>
+
                 <div>
                     <button data-bind="click: save" type="button" class="btn">Save</button>
                     <button data-bind="click: close" type="button" class="btn">Cancel</button>

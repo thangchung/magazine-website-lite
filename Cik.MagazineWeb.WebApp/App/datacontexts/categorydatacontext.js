@@ -11,9 +11,9 @@ define(function (require) {
                 params.pagers(Utilities.buildPager(data.totalPage));
             });
         },
-        getAllCategories: function () {
+        getAllCategories: function (param) {
             return categoryDataService.getAllCategories().then(function (data) {
-                return ko.observableArray(data);
+                param(data);
             });
         },
         getCategoryById: function(id, categoryModel) {
