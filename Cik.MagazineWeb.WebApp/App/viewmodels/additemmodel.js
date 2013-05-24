@@ -15,7 +15,7 @@
         this.smallimageurl = ko.observable('');
         this.mediumimageurl = ko.observable('');
         this.bigimageurl = ko.observable('');
-        this.categories = categoryDataContext.getAllCategories();
+        // this.categories = personArray; //ko.observableArray(personArray); //categoryDataContext.getAllCategories();
     };
     
     function person(id, name, age) {
@@ -24,6 +24,11 @@
         this.age = age;
     };
 
+    var personArray =
+        [new person(1, "1", 1),
+        new person(2, "2", 2),
+        new person(3, "3", 3)];
+    
     AddItemViewModel.prototype.close = function () {
         this.modal.close();
     };

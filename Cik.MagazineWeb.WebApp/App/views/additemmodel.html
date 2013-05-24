@@ -12,8 +12,14 @@
                 <input data-bind="value: shortdescription" type="text" placeholder="Type something…">
 
                 <label>Category</label>
-                <select data-bind="foreach: categories">
-                    <option data-bind="attr: { value: id } {text: name}" ></option>
+                <!--<select data-bind="foreach: categories">
+                        <option data-bind="attr: { value: id } {text: name}" ></option>
+                    </select>-->
+                
+                <select>
+                    <option value="1">Category 1</option>
+                    <option value="2">Category 2</option>
+                    <option value="3">Category 3</option>
                 </select>
 
                 <label>Content</label>
