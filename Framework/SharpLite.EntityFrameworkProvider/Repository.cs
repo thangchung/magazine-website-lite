@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Linq.Expressions;
 using SharpLite.Domain;
 using SharpLite.Domain.DataInterfaces;
 
@@ -88,6 +89,11 @@ namespace SharpLite.EntityFrameworkProvider
 
                 return query;
             }
+        }
+
+        public IQueryable<T> Query<T>(Expression<Func<T, bool>> @where)
+        {
+            return ((IQueryable<T>)this._dbContext.Set(typeof(T))).Where(@where);
         }
 
         private readonly System.Data.Entity.DbContext _dbContext;

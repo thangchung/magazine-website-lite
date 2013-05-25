@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Cik.MagazineWeb.Application.Magazines.Dtos;
 using Cik.MagazineWeb.Application.Magazines.Services;
 using Cik.MagazineWeb.Application.Magazines.ViewModels;
@@ -8,7 +9,6 @@ using Cik.MagazineWeb.Domain.MagazineMgmt;
 using Cik.MagazineWeb.Utilities;
 using Cik.MagazineWeb.Utilities.DateTime;
 using Cik.MagazineWeb.Utilities.Extensions;
-using SharpLite.Domain;
 using SharpLite.Domain.DataInterfaces;
 
 namespace Cik.MagazineWeb.Application.Magazines
@@ -51,7 +51,14 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         public CategorySummaryDto GetCategoryById(int id)
         {
-            return _categoryRepository.Get(id).MapTo<CategorySummaryDto>();
+            // return _categoryRepository.Get(id).MapTo<CategorySummaryDto>();
+
+            // TODO: Demo queryable, it should be wrapped on Base Repository to improve performmace
+            Expression<Func<Category, bool>> condition = x => x.Id == id;
+
+            var result = this._categoryRepository.Query(condition).FirstOrDefault();
+
+            return result.MapTo<CategorySummaryDto>();
         }
 
         public CategorySummaryViewModel GetCategoryPaging(int pageSize, int page)

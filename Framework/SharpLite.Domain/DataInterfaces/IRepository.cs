@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace SharpLite.Domain.DataInterfaces
 {
@@ -13,6 +15,8 @@ namespace SharpLite.Domain.DataInterfaces
 
     public interface IRepositoryWithTypedId<T, in TId> where T : class
     {
+        IQueryable<T> Query<T>(Expression<Func<T, bool>> @where);
+
         /// <summary>
         /// Provides a handle to application wide DB activities such as committing any pending changes,
         /// beginning a transaction, rolling back a transaction, etc.
