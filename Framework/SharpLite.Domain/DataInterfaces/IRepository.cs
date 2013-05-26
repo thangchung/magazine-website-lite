@@ -15,6 +15,18 @@ namespace SharpLite.Domain.DataInterfaces
 
     public interface IRepositoryWithTypedId<T, in TId> where T : class
     {
+        /// <summary>
+        /// Query method will return IQueryable to Repository.
+        /// </summary>
+        /// <param name="where">
+        /// Where condition on Entity.
+        /// </param>
+        /// <typeparam name="T">
+        /// T Entity : conrete class
+        /// </typeparam>
+        /// <returns>
+        /// IQueryable base on T Entity
+        /// </returns>
         IQueryable<T> Query<T>(Expression<Func<T, bool>> @where);
 
         /// <summary>

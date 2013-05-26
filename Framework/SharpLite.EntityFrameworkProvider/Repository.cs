@@ -91,6 +91,18 @@ namespace SharpLite.EntityFrameworkProvider
             }
         }
 
+        /// <summary>
+        /// Query method will return IQueryable to Repository.
+        /// </summary>
+        /// <param name="where">
+        /// Where condition on Entity.
+        /// </param>
+        /// <typeparam name="T">
+        /// T Entity : conrete class
+        /// </typeparam>
+        /// <returns>
+        /// IQueryable base on T Entity
+        /// </returns>
         public IQueryable<T> Query<T>(Expression<Func<T, bool>> @where)
         {
             return ((IQueryable<T>)this._dbContext.Set(typeof(T))).Where(@where);
