@@ -3,7 +3,7 @@ define(function (require) {
     var UrlSources = {
         
         // category urls
-        getAllCategoriesUrl: function (page) {
+        getAllCategoriesUrl: function () {
             return Utilities.rootUrl + 'api/categoryapi/getallcategories';
         },
         listOfCategoriesUrl: function (page) {

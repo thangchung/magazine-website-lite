@@ -30,8 +30,8 @@
             <td data-bind="text: modifiedBy"></td>
             <td data-bind="text: createdDate"></td>
             <td data-bind="text: modifiedDate"></td>
-            <td><a href="#" >Edit</a></td>
-            <td><a href="#" >Delete</a></td>
+            <td><a href="#" data-bind="click: function (data, event) { $parent.editItem(data) } ">Edit</a></td>
+            <td><a href="#" data-bind="click: function (data, event) { $parent.deleteItem(data.itemId) } ">Delete</a></td>
         </tr>
     </tbody>
 </table>

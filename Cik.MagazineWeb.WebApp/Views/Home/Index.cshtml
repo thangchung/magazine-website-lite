@@ -13,11 +13,11 @@
         @foreach (var item in Model.HottestItems)
         {
             <div class="work span3">
-                <img src="@Url.Content("~" + @item.AvatarImage)" alt="#">
+                <img src="@Url.Content("~/" + @item.AvatarImage)" alt="#">
                 <h4>@item.Title</h4>
                 <p>@item.ShortDescription</p>
                 <div class="icon-awesome">
-                    <a href="@Url.Content("~" + @item.AvatarImage)" rel="prettyPhoto"><i class="icon-search"></i></a>
+                    <a href="@Url.Content("~/" + @item.AvatarImage)" rel="prettyPhoto"><i class="icon-search"></i></a>
                     <a href="@Url.Content("/Home/Details/" + @item.Title + "/" + 0 + "/" + @item.ItemId)"><i class="icon-link"></i></a>
                 </div>
             </div>

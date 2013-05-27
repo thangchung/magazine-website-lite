@@ -10,9 +10,9 @@ define(function (require) {
             return http.get(serviceUrl);
         },
         
-        getItemId: function(id) {
-        var serviceUrl = urlSources.getItemByIdUrl(id);
-        return http.get(serviceUrl);
+        getItemById: function (id) {
+            var serviceUrl = urlSources.getItemByIdUrl(id);
+            return http.get(serviceUrl);
         },
         
         saveItem: function(itemData) {

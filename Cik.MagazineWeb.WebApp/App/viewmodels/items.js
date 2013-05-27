@@ -5,6 +5,7 @@
     var modelDialog = require('durandal/modaldialog');
     var itemDataContext = require('datacontexts/itemdatacontext');
     var addItemModel = require('viewmodels/additemmodel');
+    var editItemModel = require('viewmodels/edititemmodel');
 
     // ItemsViewModel class
     var ItemsViewModel = {
@@ -16,17 +17,43 @@
             totalRecord: ko.observable(0),
             paging: paging
         },
-        addItem: addItem
+        addItem: addItem,
+        editItem: editItem,
+        deleteItem: deleteItem
     };
 
     return ItemsViewModel;
 
     //#region Internal Methods
-    function addItem(item) {
+    
+    function editItem(dataRow) {
+        var model = new editItemModel();
+        return itemDataContext
+            .getItemById(dataRow.itemId, model)
+            .then(function () {
+                modelDialog.show(model).then(function () {
+                    reloadListOfItems();
+                });
+            });
+    }
+    
+    function addItem() {
         return modelDialog
             .show(new addItemModel())
-            .then(function (response) {
+            .then(function () {
                 reloadListOfItems();
+            });
+    }
+    
+    function deleteItem(id) {
+        return app
+            .showMessage('Do you want to delete?', 'Delete Item', ['Yes', 'No'])
+            .then(function (answer) {
+                if (answer === 'Yes') {
+                    itemDataContext.deleteItem(id).then(function () {
+                        reloadListOfItems();
+                    });
+                }
             });
     }
 
@@ -52,5 +79,6 @@
             pagers: ItemsViewModel.itemList.pagers
         };
     }
+    
     //#endregion
 });

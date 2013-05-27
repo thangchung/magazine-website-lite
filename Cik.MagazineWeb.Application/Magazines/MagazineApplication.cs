@@ -139,9 +139,18 @@ namespace Cik.MagazineWeb.Application.Magazines
             return viewModel;
         }
 
+        /// <summary>
+        /// The get item by id.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ItemDetailsDto"/>.
+        /// </returns>
         public ItemDetailsDto GetItemById(int id)
         {
-            var data = _itemRepository.Get(id);
+            var data = this._itemRepository.Include("ItemContent").Get(id);
             return new ItemDetailsDto
                 {
                     Id = data.Id,
@@ -152,7 +161,6 @@ namespace Cik.MagazineWeb.Application.Magazines
                     BigImageUrl = data.ItemContent.BigImage,
                     Content = data.ItemContent.Content,
                     ShortDescription = data.ItemContent.ShortDescription,
-                    NumOfView = data.ItemContent.NumOfView,
                     CreatedDate = data.CreatedDate,
                     CreatedBy = data.CreatedBy,
                     ModifiedBy = data.ModifiedBy,
@@ -160,6 +168,12 @@ namespace Cik.MagazineWeb.Application.Magazines
                 };
         }
 
+        /// <summary>
+        /// The save item.
+        /// </summary>
+        /// <param name="dto">
+        /// The dto.
+        /// </param>
         public void SaveItem(ItemDetailsDto dto)
         {
             using (var context = _itemRepository.DbContext)
@@ -170,12 +184,16 @@ namespace Cik.MagazineWeb.Application.Magazines
                 if (dto.Id > 0)
                 {
                     itemEntity = _itemRepository.Get(dto.Id);
+
                     // Update category for Item
                     itemEntity.Category = _categoryRepository.Get(dto.CategoryId);
 
                     // Update Item Content
-                    itemContentEntity = _itemContentRepository.Get(itemEntity.ItemContentId); // this is actually not a valid way
-                    if (itemContentEntity == null) return;
+                    itemContentEntity = 
+                        this._itemContentRepository.Get(itemEntity.ItemContentId); // this is actually not a valid way
+                    
+                    if (itemContentEntity == null)
+                        return;
 
                     // Update Entity manually, Will be refactored to generic method applied for all entities
                     itemContentEntity.BigImage = dto.BigImageUrl;
@@ -183,10 +201,13 @@ namespace Cik.MagazineWeb.Application.Magazines
                     itemContentEntity.MediumImage = dto.MediumImageUrl;
                     itemContentEntity.SmallImage = dto.SmallImageUrl;
                     itemContentEntity.ShortDescription = dto.ShortDescription;
-                    itemContentEntity.CreatedBy = dto.CreatedBy;
                     itemContentEntity.Title = dto.Title;
                     itemContentEntity.ModifiedBy = "Actor login";
                     itemContentEntity.ModifiedDate = DatetimeRegion.GetCurrentTime();
+
+                    itemEntity.Category = this._categoryRepository.Get(dto.CategoryId);
+                    itemEntity.ModifiedBy = "Actor Login";
+                    itemEntity.ModifiedDate = DatetimeRegion.GetCurrentTime();
                 }
                 else
                 {
@@ -204,21 +225,25 @@ namespace Cik.MagazineWeb.Application.Magazines
 
                     itemEntity = new Item
                         {
-                            Category = _categoryRepository.Get(dto.CategoryId),
+                            Category = this._categoryRepository.Get(dto.CategoryId),
                             CreatedBy = "Actor Login",
                             CreatedDate = DatetimeRegion.GetCurrentTime()
                         };
                 }
 
-                using (var itemDetailContext = _itemContentRepository.DbContext)
+                using (var itemDetailContext = this._itemContentRepository.DbContext)
                 {
-                    _itemContentRepository.SaveOrUpdate(itemContentEntity);
+                    this._itemContentRepository.SaveOrUpdate(itemContentEntity);
                     itemDetailContext.CommitChanges();
                 }
 
                 // Add new Case
-                if (dto.Id == 0) itemEntity.ItemContent = itemContentEntity;
-                _itemRepository.SaveOrUpdate(itemEntity);
+                if (dto.Id == 0)
+                {
+                    itemEntity.ItemContent = itemContentEntity;
+                }
+
+                this._itemRepository.SaveOrUpdate(itemEntity);
 
                 context.CommitChanges();
             }
@@ -228,12 +253,23 @@ namespace Cik.MagazineWeb.Application.Magazines
         {
             if (id <= 0) return; // should handle exception here
 
-            using (var context = _itemRepository.DbContext)
+            ItemContent itemContent = null;
+            using (var context = this._itemRepository.DbContext)
             {
-                var entity = _itemRepository.Get(id);
+                var entity = this._itemRepository.Include("ItemContent").Get(id);
+
                 if (entity == null) return; // should handle exception here
 
-                _itemRepository.Delete(entity);
+                itemContent = entity.ItemContent;
+                
+                this._itemRepository.Delete(entity);
+
+                context.CommitChanges();
+            }
+
+            using (var context = this._itemContentRepository.DbContext)
+            {
+                this._itemContentRepository.Delete(itemContent);
 
                 context.CommitChanges();
             }

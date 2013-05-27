@@ -14,20 +14,19 @@ define(function (require) {
         },
         
         getItemById: function (id, itemModel) {
-            return itemDataService.getItemByIdUrl(id).then(function (data) {
+            return itemDataService.getItemById(id).then(function (data) {
                 // data: is Item Model from server side
                 // Binding Data manually
                 itemModel.id(data.id);
-                itemModel.categoryid(data.categoryid);
+                itemModel.categoryId(data.categoryId);
 
                 // Item Content region
                 itemModel.title(data.title);
-                itemModel.shortdescription(data.shortdescription);
+                itemModel.shortdescription(data.shortDescription);
                 itemModel.content(data.content);
                 itemModel.smallimageurl(data.smallimageurl);
                 itemModel.mediumimageurl(data.mediumimageurl);
                 itemModel.bigimageurl(data.bigimageurl);
-                itemModel.numberofview(data.numberofview);
             });
         },
         
