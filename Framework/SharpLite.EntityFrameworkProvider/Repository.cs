@@ -65,6 +65,16 @@ namespace SharpLite.EntityFrameworkProvider
             _dbContext.SaveChanges();
         }
 
+        public virtual void DeleteById(TId id)
+        {
+            var entity = _dbContext.Set(typeof(T)).Find(id);
+            if (entity != null)
+            {
+                _dbContext.Set<T>().Remove((T) entity);
+                _dbContext.SaveChanges();
+            }
+        }
+
         /// <summary>
         /// Include all sub table names, so when we executing the query, 
         /// it will be automatically get all data from sub-tables as well
