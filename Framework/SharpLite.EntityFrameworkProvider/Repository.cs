@@ -49,6 +49,8 @@ namespace SharpLite.EntityFrameworkProvider
 
             if (entity.IsTransient())
                 _dbContext.Set<T>().Add(entity);
+            
+            // _dbContext.SaveChanges();
 
             return entity;
         }

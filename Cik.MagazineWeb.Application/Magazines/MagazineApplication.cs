@@ -231,11 +231,7 @@ namespace Cik.MagazineWeb.Application.Magazines
                         };
                 }
 
-                using (var itemDetailContext = this._itemContentRepository.DbContext)
-                {
-                    this._itemContentRepository.SaveOrUpdate(itemContentEntity);
-                    itemDetailContext.CommitChanges();
-                }
+                this._itemContentRepository.SaveOrUpdate(itemContentEntity);
 
                 // Add new Case
                 if (dto.Id == 0)
