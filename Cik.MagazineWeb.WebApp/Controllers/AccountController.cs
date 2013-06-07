@@ -55,9 +55,9 @@ namespace Cik.MagazineWeb.WebApp.Controllers
         [ValidateAntiForgeryToken] 
         public ActionResult Login(LoginViewModel model, string returnUrl) 
         { 
-            // var encodePassword = _encryptor.Encode(model.Password); 
- 
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe)) 
+            var encodePassword = _encryptor.Encode(model.Password);
+
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, encodePassword, persistCookie: model.RememberMe)) 
             { 
                 return RedirectToLocal(returnUrl); 
             } 
@@ -108,16 +108,17 @@ namespace Cik.MagazineWeb.WebApp.Controllers
                     //values.Add("CreatedBy", model.UserName);
                     //values.Add("CreatedDate", DateTime.UtcNow);
                     //values.Add("Role", 1);
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new
+                    var encodePassword = _encryptor.Encode(model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, encodePassword, new
                         {
                             DisplayName = model.UserName,
-                            Password = model.Password,
+                            Password = encodePassword,
                             Email = model.UserName + "@cik.com",
                             CreatedBy = model.UserName,
                             CreatedDate = DateTime.UtcNow,
                             Role = 1
-                        }); 
-                    WebSecurity.Login(model.UserName, model.Password);
+                        });
+                    WebSecurity.Login(model.UserName, encodePassword);
                     return RedirectToAction("Index", "Dashboard"); 
                 } 
                 catch (MembershipCreateUserException e) 
@@ -192,7 +193,10 @@ namespace Cik.MagazineWeb.WebApp.Controllers
                     bool changePasswordSucceeded; 
                     try 
                     { 
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword); 
+                        changePasswordSucceeded = 
+                            WebSecurity.ChangePassword(User.Identity.Name, 
+                                _encryptor.Encode(model.OldPassword), 
+                                _encryptor.Encode(model.NewPassword)); 
                     } 
                     catch (Exception) 
                     { 
@@ -223,7 +227,7 @@ namespace Cik.MagazineWeb.WebApp.Controllers
                 { 
                     try 
                     { 
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword); 
+                        WebSecurity.CreateAccount(User.Identity.Name, _encryptor.Encode(model.NewPassword)); 
                         return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess }); 
                     } 
                     catch (Exception e) 
