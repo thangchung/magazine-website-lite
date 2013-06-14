@@ -32,6 +32,7 @@ namespace Cik.MagazineWeb.WebApp.App_Start
             bundles.Add(
               new ScriptBundle("~/scripts/vendor")
                 .Include("~/scripts/jquery-{version}.js")
+                .Include("~/scripts/jquery.blockUI.js")
                 .Include("~/scripts/knockout-{version}.debug.js")
                 .Include("~/scripts/sammy-{version}.js")
                 .Include("~/scripts/toastr.js")

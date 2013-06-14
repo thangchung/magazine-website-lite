@@ -3,17 +3,18 @@
         defaultJSONPCallbackParam:'callback',
         get:function(url, query) {
             // return $.ajax(url, { data: query }); 
-            //style='display: none'
-
-            var style = "style='display: block; margin: auto; backgroundColor: transparent; border: none; zIndex: 10002'";
-            var imageLoading = "<img id='ImageProcessing' src='/Content/images/InProgress.gif' alt='Loading...' " + style + " />";
+            $.blockUI({
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#fff'
+                }
+            });
             
-            // var styleDivLoading = "style = 'height: 400px; position: relative; background-color: gray; /* for demonstration */";
-            // var divLoading = "<div id='LoadingImage' >" + imageLoading + "</div>";
-            $('body').append(imageLoading);
-            //$.blockUI();
-            
-            // show loading
             return $.ajax({
                 url: url,
                 data: query,
@@ -21,12 +22,10 @@
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function() { 
-                    //$.unblockUI();
-                    $("#ImageProcessing").remove();
+                    $.unblockUI();
                 }, 
-                error: function (xhr, status) {
-                    //$.unblockUI();
-                    $("#ImageProcessing").remove();
+                error: function () {
+                    $.unblockUI();
                 } 
             });
             
