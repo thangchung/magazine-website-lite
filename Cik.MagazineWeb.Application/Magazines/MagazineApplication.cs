@@ -42,7 +42,7 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         #region public APIs
 
-        #region category
+        #region Category
 
         public IEnumerable<CategorySummaryDto> GetCategorySummaries()
         {
@@ -121,8 +121,20 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         #endregion
 
-        #region item
+        #region Item
 
+        /// <summary>
+        /// The get item summary paging.
+        /// </summary>
+        /// <param name="pageSize">
+        /// The page size.
+        /// </param>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ItemSummaryViewModel"/>.
+        /// </returns>
         public ItemSummaryViewModel GetItemSummaryPaging(int pageSize, int page)
         {
             var viewModel = new ItemSummaryViewModel();
@@ -245,6 +257,12 @@ namespace Cik.MagazineWeb.Application.Magazines
             }
         }
 
+        /// <summary>
+        /// The delete item.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
         public void DeleteItem(int id)
         {
             if (id <= 0) return; // should handle exception here

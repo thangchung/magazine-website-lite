@@ -37,9 +37,9 @@
         model.title = this.title;
         model.shortdescription = this.shortdescription;
         model.content = this.content;
-        model.smallimageurl = this.smallimageurl;
-        model.mediumimageurl = this.mediumimageurl;
-        model.bigimageurl = this.bigimageurl;
+        // model.smallimageurl = this.smallimageurl;
+        // model.mediumimageurl = this.mediumimageurl;
+        // model.bigimageurl = this.bigimageurl;
         model.categoryid = this.categoryId;
 
         if (itemDataContext == null || itemDataContext == undefined) return;
