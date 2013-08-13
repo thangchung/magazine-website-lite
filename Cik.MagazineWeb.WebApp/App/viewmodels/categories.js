@@ -20,7 +20,7 @@
         addCategory: addCategory,
         editCategory: editCategory,
         deleteCategory: deleteCategory,
-        closeAddCategoryWindow: closeAddCategoryWindow
+        reloadListOfCategories: reloadListOfCategories
     };
 
     return CategoriesViewModel;
@@ -39,8 +39,8 @@
     function addCategory(item) {
         return modelDialog
             .show(new addCategoryModel())
-            .then(function(response) {
-                reloadListOfCategories();
+            .then(function (response) {
+                reloadListOfCategories(); //it worked
             });
     }
 
@@ -49,8 +49,8 @@
         return categoryDataContext
             .getCategoryById(dataRow.id, model)
             .then(function(data) {
-                modelDialog.show(model).then(function(response) {
-                    reloadListOfCategories();
+                modelDialog.show(model).then(function (response) {
+                    reloadListOfCategories(); //it didn't work
                 });
             });
     }
@@ -61,14 +61,10 @@
             .then(function(answer) {
                 if (answer === 'Yes') {
                     categoryDataContext.deleteCategory(id).then(function() {
-                        reloadListOfCategories();
+                        reloadListOfCategories(); //it didn't work
                     });
                 }
             });
-    }
-
-    function closeAddCategoryWindow(dialog) {
-
     }
     
     function reloadListOfCategories() {
@@ -76,12 +72,19 @@
     }
 
     function buildParametters() {
-        return {
-            categories: CategoriesViewModel.categoryList.categories,
-            totalPage: CategoriesViewModel.categoryList.totalCategory,
-            page: CategoriesViewModel.categoryList.currentPage,
-            pagers: CategoriesViewModel.categoryList.pagers
-        };
+
+        // alert("Build parameter: \n" + "Categories:" + CategoriesViewModel.categoryList.categories);
+        try {
+            return {
+                categories: CategoriesViewModel.categoryList.categories,
+                totalPage: CategoriesViewModel.categoryList.totalCategory,
+                page: CategoriesViewModel.categoryList.currentPage,
+                pagers: CategoriesViewModel.categoryList.pagers
+            };
+        } catch (ex) {
+            alert(ex);
+            return null;
+        }
     }
     //#endregion
 });

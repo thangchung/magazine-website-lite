@@ -16,6 +16,9 @@ namespace SharpLite.EntityFrameworkProvider
 
     public class RepositoryWithTypedId<T, TId> : IRepositoryWithTypedId<T, TId> where T : class, IEntityWithTypedId<TId>
     {
+
+        private static DbContext SharpDbContext;
+
         public RepositoryWithTypedId(System.Data.Entity.DbContext dbContext)
         {
             if (dbContext == null) throw new ArgumentNullException("dbContext may not be null");
@@ -28,7 +31,12 @@ namespace SharpLite.EntityFrameworkProvider
         {
             get
             {
-                return new DbContext(_dbContext);
+                if (SharpDbContext == null)
+                {
+                    SharpDbContext = new DbContext(_dbContext);
+                }
+                // return new DbContext(_dbContext);
+                return SharpDbContext;
             }
         }
 
@@ -50,7 +58,7 @@ namespace SharpLite.EntityFrameworkProvider
             if (entity.IsTransient())
                 _dbContext.Set<T>().Add(entity);
             
-            // _dbContext.SaveChanges();
+            _dbContext.SaveChanges();
 
             return entity;
         }

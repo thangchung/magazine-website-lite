@@ -13,12 +13,12 @@
         this.modal.close();
     };
 
-    AddCategoryViewModel.prototype.save = function () {
+    AddCategoryViewModel.prototype.save = function() {
         var model = new categoryModel();
         model.name = this.name();
 
         if (datacontext == null || datacontext == undefined) return;
-        this.modal.close(datacontext.saveCategory(model));
+        this.modal.close(datacontext.saveCategory(model)); 
     };
     
     AddCategoryViewModel.prototype.activate = function (dataModel) {

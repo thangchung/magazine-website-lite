@@ -10,6 +10,7 @@ using Cik.MagazineWeb.Utilities;
 using Cik.MagazineWeb.Utilities.DateTime;
 using Cik.MagazineWeb.Utilities.Extensions;
 using SharpLite.Domain.DataInterfaces;
+using WebMatrix.WebData;
 
 namespace Cik.MagazineWeb.Application.Magazines
 {
@@ -77,30 +78,29 @@ namespace Cik.MagazineWeb.Application.Magazines
 
         public void SaveCategory(CategorySummaryDto dto)
         {
-            using (var context = _categoryRepository.DbContext)
+            using (var context = this._categoryRepository.DbContext)
             {
                 Category newEntity = null;
-
                 if (dto.Id > 0)
                 {
-                    var oldEntity = GetCategoryById(dto.Id); // this is actually not a valid way
-                    if (oldEntity == null) return;
+                    var oldEntity = this._categoryRepository.Get(dto.Id); // this is actually not a valid way
+                    Guard.ArgumentNotNull(oldEntity, "Current Category is allowed nullable");
+                    
                     newEntity = dto.MapTo<Category>();
                     newEntity.CreatedBy = oldEntity.CreatedBy;
-                    if (oldEntity.CreatedDate != null) newEntity.CreatedDate = oldEntity.CreatedDate.Value;
-                    newEntity.ModifiedBy = "thangchung"; // need to remove hard code
+                    newEntity.CreatedDate = oldEntity.CreatedDate;
+
+                    newEntity.ModifiedBy = WebSecurity.CurrentUserName;
                     newEntity.ModifiedDate = DatetimeRegion.GetCurrentTime();
                 }
                 else
                 {
                     newEntity = dto.MapTo<Category>();
-                    newEntity.CreatedBy = "thangchung"; // need to remove hard code
+                    newEntity.CreatedBy = WebSecurity.CurrentUserName;
                     newEntity.CreatedDate = DatetimeRegion.GetCurrentTime();
                 }
 
                 _categoryRepository.SaveOrUpdate(newEntity);
-
-                context.CommitChanges();
             }
         }
 
