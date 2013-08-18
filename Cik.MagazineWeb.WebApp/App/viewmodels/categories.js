@@ -46,9 +46,8 @@
 
     function editCategory(dataRow) {
         var model = new editCategoryModel();
-        return categoryDataContext
-            .getCategoryById(dataRow.id, model)
-            .then(function(data) {
+        return categoryDataContext.getCategoryById(dataRow.id, model)
+            .then(function (data) {
                 modelDialog.show(model).then(function (response) {
                     reloadListOfCategories(); //it didn't work
                 });
@@ -72,19 +71,12 @@
     }
 
     function buildParametters() {
-
-        // alert("Build parameter: \n" + "Categories:" + CategoriesViewModel.categoryList.categories);
-        try {
-            return {
+        return {
                 categories: CategoriesViewModel.categoryList.categories,
                 totalPage: CategoriesViewModel.categoryList.totalCategory,
                 page: CategoriesViewModel.categoryList.currentPage,
                 pagers: CategoriesViewModel.categoryList.pagers
             };
-        } catch (ex) {
-            alert(ex);
-            return null;
-        }
     }
     //#endregion
 });
